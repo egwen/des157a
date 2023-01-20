@@ -1,8 +1,116 @@
-#banner {
-    max-width: 1100px;
-    max-height: 250px;
+h1, h2, ul, li, p{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Raleway";
+    color: #0F1E29;
+    background-color: #D9D9D9;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+section {
+    background-color: white;
+    width: 50vw;
+    padding: 1.5em;
+    margin: 1.5em;
+    /* display: flex; */
+    /* flex-direction: column; */
+}
+
+section li {
+    margin: 1em 0.5em ;
+}
+section ul {
+    /* align-self: center; */
+    margin-bottom: 1.5em;
+}
+
+a:link {
+    text-decoration: none;
+    color: #0F1E29;
 }
 
 li {
     list-style-type: none;
+}
+
+footer {
+    background-color: #0F1E29;
+    width: 100vw;
+    height: 10vh;
+    
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+}
+
+footer #email{
+    color:#D9D9D9;
+}
+
+
+#banner {
+    background-color: #0F1E29;
+    color: #D9D9D9;
+    max-width: 1100px;
+    min-height: 250px;
+    width: 90vw;
+    position: relative;
+}
+#banner #headers {
+    position: absolute;
+    bottom: 0;
+}
+
+#banner h1 {
+    font-size: 2em;
+}
+
+#banner h2 {
+    font-size: 1.3em;
+}
+
+
+
+@media only screen and (min-width: 800px) {
+    main {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        height: 60vh;
+    }
+
+    #banner {
+        height: 30vh;
+    }
+    #banner > div {
+        width: 100%;
+        position: relative;
+    }
+
+    #headers > h1 {
+        position: absolute;
+        bottom: 0;
+        left: 0.8em;
+    }
+    #headers > h2 {
+        position: absolute;
+        bottom: 0;
+        right: 0.8em;
+    }
+    
+
+    section {
+        width: 20vw;
+    }
+
+    footer {
+        height: 8vh;
+    }
 }
