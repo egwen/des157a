@@ -5,38 +5,59 @@ h1, h2, ul, li, p{
 
 body {
     font-family: "Raleway";
-    color: #0F1E29;
-    background-color: #D9D9D9;
+    /* color: #0F1E29; */
+    color:#D9D9D9;
+    background-color: #233E52;
     display: flex;
     flex-flow: column;
     align-items: center;
 }
 
 section {
-    background-color: white;
+    /* background-color: #d9d9d9ce; */
+    background-color: #0F1E2988;
     width: 50vw;
     padding: 1.5em;
+    padding-left: 3.0em;
     margin: 1.5em;
+    /* filter: box-shadow(0px 0px 10px #dfdfdf); */
+
     /* display: flex; */
     /* flex-direction: column; */
 }
 
 section li {
-    margin: 1em 0.5em ;
+    margin: 1em 1.5em;
 }
 section ul {
     /* align-self: center; */
-    margin-bottom: 1.5em;
+    margin-bottom: 2em;
 }
 
-a:link {
+a {
     text-decoration: none;
-    color: #0F1E29;
+    color:#D9D9D9
+}
+
+a:hover {
+    border-bottom: 5px solid #4E747C;
 }
 
 li {
     list-style-type: none;
+    font-size: 1.2em;
 }
+
+#research-dev a:hover {
+    border-color:  #4E747C;
+}
+#studios-exp a:hover {
+    border-color: #3F6770;
+}
+#final a:hover {
+    border-color: #2F5760;
+}
+
 
 footer {
     background-color: #0F1E29;
@@ -60,12 +81,14 @@ footer #email{
     color: #D9D9D9;
     max-width: 1100px;
     min-height: 250px;
-    width: 90vw;
+    width: 100vw;
     position: relative;
+    overflow: hidden;
 }
 #banner #headers {
     position: absolute;
-    bottom: 0;
+    bottom:0.2em;
+    left: 0.2em;
 }
 
 #banner h1 {
@@ -76,6 +99,64 @@ footer #email{
     font-size: 1.3em;
 }
 
+#scene {
+    position: relative;
+    left: 50%;
+    transform: translateX(-55%) scale(1.1);
+
+    align-self: center;
+}
+
+/* Automatic Animation */
+
+#cloud-right {
+    animation: driftLeft 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#cloud-left {
+    transform: translateX(-100px);
+    animation: driftRight 10s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+@keyframes driftLeft {
+    0% {transform: translateX(0px)}
+    /* 25% {transform: translateX(-20px)} */
+    100%{transform: translateX(-120px)}
+}
+
+@keyframes driftRight {
+    0% {transform: translateX(-100px)}
+    /* 25% {transform: translateX(-80px)} */
+    100%{transform: translateX(50px)}
+}
+
+/* Hover Animation */
+
+.moon {
+    animation: raiseLight 6s;
+    animation-fill-mode: forwards;
+}
+
+#banner:hover .moon{
+    animation-direction: alternate;
+    animation: dropLight 4s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes raiseLight {
+    0% {transform: translateY(200px)}
+    100% {transform: translateY(0px)}
+}
+
+@keyframes dropLight {
+    0% {transform: translateY(0px)}
+    100% {transform: translateY(200px)}
+}
+
 
 
 @media only screen and (min-width: 800px) {
@@ -84,10 +165,14 @@ footer #email{
         flex-direction: row;
         justify-content: space-around;
         height: 60vh;
+        max-width: 1100px;
+        box-sizing: content-box;
     }
 
     #banner {
         height: 30vh;
+        max-height: 250px;
+        /* width: 92vw; */
     }
     #banner > div {
         width: 100%;
@@ -96,18 +181,24 @@ footer #email{
 
     #headers > h1 {
         position: absolute;
-        bottom: 0;
-        left: 0.8em;
+        bottom: 0.2em;
+        left: 0.5em;
     }
     #headers > h2 {
         position: absolute;
-        bottom: 0;
-        right: 0.8em;
+        bottom: 0.2em;
+        right: 1em;
     }
     
 
     section {
         width: 20vw;
+    }
+    section #studios-exp {
+        padding-left: 0;
+    }
+    section #final {
+        padding-right: 0;
     }
 
     footer {
