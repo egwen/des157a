@@ -5,7 +5,6 @@ h1, h2, ul, li, p{
 
 body {
     font-family: "Raleway";
-    /* color: #0F1E29; */
     color:#D9D9D9;
     background-color: #233E52;
     display: flex;
@@ -15,23 +14,20 @@ body {
 }
 
 section {
-    /* background-color: #d9d9d9ce; */
     background-color: #0F1E2988;
     width: 50vw;
     padding: 1.5em;
     padding-left: 3.0em;
     margin: 1.5em;
-    /* filter: box-shadow(0px 0px 10px #dfdfdf); */
-
-    /* display: flex; */
-    /* flex-direction: column; */
 }
 
 section li {
-    margin: 1em 1.5em;
+    margin: 1em 0em 1em 1.5em;
+    list-style-type: none;
+    font-size: 1.2em;
 }
+
 section ul {
-    /* align-self: center; */
     margin-bottom: 2em;
 }
 
@@ -40,13 +36,9 @@ a {
     color:#D9D9D9
 }
 
+/* Link hover interactions */
 a:hover {
     border-bottom: 5px solid #4E747C;
-}
-
-li {
-    list-style-type: none;
-    font-size: 1.2em;
 }
 
 #research-dev a:hover {
@@ -59,23 +51,17 @@ li {
     border-color: #2F5760;
 }
 
-
 footer {
-    background-color: #0F1E29;
-    width: 100vw;
+    width: 100%;
     height: 10vh;
-    align-self: baseline;
+    min-height: 50px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-content: center;
     justify-content: center;
+    background-color: #0F1E29;
 }
-
-footer #email{
-    color:#D9D9D9;
-}
-
 
 #banner {
     background-color: #0F1E29;
@@ -85,15 +71,9 @@ footer #email{
     width: 100vw;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
-#cover {
-    fill: #0F1E29;
-    fill-opacity: 0;
-    /* height: 250px;
-    opacity: 50%;
-    position: absolute; */
-}
 #banner #headers {
     position: absolute;
     bottom:0.2em;
@@ -108,14 +88,22 @@ footer #email{
     font-size: 1.3em;
 }
 
-#scene {
+#scenery {
     position: relative;
     left: 50%;
     transform: translateX(-55%) scale(1.05) translateY(2%);
-    align-self: center;
 }
 
-/* Automatic Animation */
+#cover {
+    fill: #0F1E29;
+    fill-opacity: 0;
+}
+
+#email{
+    color:#D9D9D9;
+}
+
+/* Scenery Automatic Animation */
 
 #cloud-right {
     animation: driftLeft 10s;
@@ -131,7 +119,7 @@ footer #email{
 }
 
 #banner:hover #stars1 .starlight {
-    animation: twinkle 3s;
+    animation: twinkle 2s;
     animation-delay: 1s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -145,42 +133,40 @@ footer #email{
 }
 
 #banner:hover #stars3 .starlight {
-    animation: twinkle 3s;
+    animation: twinkle 4s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
 }
 
-
-
+/* Keyframe animation for clouds */
 @keyframes driftLeft {
     0% {transform: translateX(0px)}
-    /* 25% {transform: translateX(-20px)} */
     100%{transform: translateX(-120px)}
 }
 
 @keyframes driftRight {
     0% {transform: translateX(-100px)}
-    /* 25% {transform: translateX(-80px)} */
     100%{transform: translateX(50px)}
 }
 
-/* Hover Animation */
-
+/* Default animation for on-load and reverse hover */
 .moon {
     animation: raiseLight 5s;
     animation-fill-mode: forwards;
 }
 .star {
+    fill-opacity: 0;
     fill: white;
-    fill-opacity: 0%;
     animation: removeStars 5s;
     animation-fill-mode: forwards;
 }
 .starlight {
+    fill-opacity: 0;
     animation: removeStarLight 5s;
     animation-fill-mode: forwards;
-    fill-opacity: 0%;
 }
+
+/* Hover Animations */
 
 #banner:hover .star {
     animation-direction: alternate;
@@ -210,6 +196,7 @@ footer #email{
     animation-fill-mode: forwards;
 }
 
+/* Keyframe animations for moon */
 @keyframes raiseLight {
     0% {transform: translateY(200px)}
     100% {transform: translateY(0px)}
@@ -221,61 +208,47 @@ footer #email{
 }
 
 @keyframes addCover {
-    0% { fill-opacity: 0% }
-    100% { fill-opacity: 70% }
+    0% { fill-opacity: 0 }
+    100% { fill-opacity: 0.7 }
 }
 @keyframes removeCover {
-    0% { fill-opacity: 70% }
-    100% { fill-opacity: 0% }
+    0% { fill-opacity: 0.7 }
+    100% { fill-opacity: 0 }
 }
 
+/* Keyframe animations for stars */
 @keyframes addStars {
-    0% { fill-opacity: 0% }
-    100% { fill-opacity: 25% }
+    0% { fill-opacity: 0 }
+    100% { fill-opacity: 0.25 }
 }
 @keyframes removeStars {
-    0% { fill-opacity: 25% }
-    100% { fill-opacity: 0% }
-}
-
-@keyframes addStarlight {
-    0% { fill-opacity: 0% }
-    100% { fill-opacity: 1% }
-}
-@keyframes removeStarLight {
-    0% { fill-opacity: 1% }
-    100% { fill-opacity: 0% }
+    0% { fill-opacity: 0.25 }
+    100% { fill-opacity: 0 }
 }
 
 @keyframes twinkle {
-    0% { fill-opacity: 0%;
-        r: 1px;
-    }
-    100% { fill-opacity: 1%;
-        r: 6px;
-    }
+    0% { fill-opacity: 0;}
+    100% { fill-opacity: 0.02; }
 }
 
-
-
-
+/* Responsive media query for desktop view 1200x750 */
 
 @media only screen and (min-width: 800px) {
     main {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
         height: 62vh;
         max-width: 1100px;
         min-height: 450px;
         box-sizing: content-box;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
     #banner {
-        /* height: 30vh; */
         height: 250px;
-        /* width: 92vw; */
     }
+
+    /* Separate headers on desktop view */
     #banner > div {
         width: 100%;
         position: relative;
@@ -286,21 +259,15 @@ footer #email{
         bottom: 0.2em;
         left: 0.5em;
     }
+
     #headers > h2 {
         position: absolute;
         bottom: 0.2em;
         right: 1em;
     }
-    
 
     section {
         width: 20vw;
-    }
-    section #studios-exp {
-        padding-left: 0;
-    }
-    section #final {
-        padding-right: 0;
     }
 
     footer {
