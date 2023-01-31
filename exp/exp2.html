@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 2</title>
+
+    <style>
+        #canvas {
+            width: 500px;
+            height: 300px;
+            border: solid rgb(74, 74, 74) 1px;
+            /* background-color: #eeeeee; */
+            display: flex;
+            flex-direction: row;
+            overflow:hidden;
+
+        }
+        #canvas div {
+            /* border: solid black 1px; */
+            height: 150%;
+            width: 5vw;
+            min-width: 1vw;
+            transition: width 1s;
+        }
+
+        #canvas div:hover {
+            width: 10vw;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Experiment 2</h1>
+    <h2>Click to change the colors</h2>
+    <main>
+        <div id="color-input"></div>
+        <div id="canvas"></div>
+    </main>
+    
+
+    <script>
+        /*
+            This script prompts the user to choose their favority primary or secondary color.
+            Then it generates a canvas with stripes of that color. 
+            Each stripe has a randomly generated hue, saturation, and lightness that is near their selected color.
+            The user can click each stripe to generate a new random color.
+        */
+
+        var colorList = ['red', 'yellow', 'blue', 'orange', 'green', 'magenta'];
+        var hexColorList = [0, 60, 240, 30, 140, 300];
+
+        // Generate a random integer between min and max (inclusive)
+        function randomInt(min, max) {
+            return Math.floor( (max - min + 1) * Math.random() ) + min
+        }
+
+        // Generate an hsl css style close to the user's selected color
+        // The hue, saturation and light values are randomly generated within a range
+        function generateHslColor(color) {
+            var colorIndex = colorList.indexOf(color);
+
+            var hue = randomInt(hexColorList[colorIndex]-15, hexColorList[colorIndex]+15);
+            var saturation = randomInt(30, 90);
+            var light = randomInt(40, 70);
+
+            return `hsl(${hue}deg ${saturation}% ${light}%)`;
+        }
+       
+
+        var color = prompt(`Choose your favorite primary or secondary color: \n e.g. ${colorList.join(", ")}`, 'red');
+
+        var colorInput = document.getElementById('color-input');
+        var colorP = document.createElement('p');
+
+        // Randomly select a color if the user's input was invalid
+        if ( colorList.indexOf(color.toLowerCase()) == -1 ) {
+            var invalidColor = document.createTextNode('Your color was not in our list so we randomly selected a color for you. ');
+            colorP.appendChild(invalidColor);
+            color = colorList[Math.floor(randomInt(0, colorList.length-1))];
+        }
+
+        colorP.appendChild(document.createTextNode(`Selected Color: ${color}`));
+        colorInput.appendChild(colorP);
+
+        // "Paint" the canvas by generating 10 stripes with randomly selected colors
+        var canvas = document.getElementById('canvas');
+        console.log(generateHslColor(color));
+
+        canvas.style.backgroundColor = generateHslColor(color);
+
+        for (var i = 0; i < 10; i++) {
+            // Create stripe element
+            let stripe = document.createElement('div');
+            stripe.id = 'stripe' + i;
+            // Set the color to a random hsl value
+            var bgColor = generateHslColor(color);
+            stripe.style.backgroundColor = bgColor;
+            // Change the color when the user clicks the element
+            stripe.addEventListener('click', () => {
+                console.log("click", stripe.id, stripe.style.backgroundColor);
+                
+                stripe.style.backgroundColor = generateHslColor(color);
+            });
+            canvas.appendChild(stripe);
+        }
+
+
+
+
+        
+    </script>
+</body>
+</html>
