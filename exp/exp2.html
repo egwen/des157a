@@ -7,26 +7,40 @@
     <title>Experiment 2</title>
 
     <style>
+        body {
+            margin: 5vh 25vw;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main {
+            width: 100%;
+        }
+
+        h1, h2 {
+            align-self: flex-start;
+        }
+
         #canvas {
-            width: 500px;
+            width: 100%;
             height: 300px;
-            border: solid rgb(74, 74, 74) 1px;
-            /* background-color: #eeeeee; */
+            border: solid rgb(24, 24, 24) 2px;
             display: flex;
             flex-direction: row;
-            overflow:hidden;
+            overflow: hidden;
 
         }
         #canvas div {
-            /* border: solid black 1px; */
+            flex-basis: 100%;
             height: 150%;
-            width: 5vw;
             min-width: 1vw;
-            transition: width 1s;
+            transition: flex 1s;
         }
 
         #canvas div:hover {
-            width: 10vw;
+            background-color: white;
+            flex: 250%;
         }
 
     </style>
@@ -50,6 +64,7 @@
 
         var colorList = ['red', 'yellow', 'blue', 'orange', 'green', 'magenta'];
         var hexColorList = [0, 60, 240, 30, 140, 300];
+        var color = colorList[Math.floor(randomInt(0, colorList.length-1))]; // defaut random color
 
         // Generate a random integer between min and max (inclusive)
         function randomInt(min, max) {
@@ -62,14 +77,14 @@
             var colorIndex = colorList.indexOf(color);
 
             var hue = randomInt(hexColorList[colorIndex]-15, hexColorList[colorIndex]+15);
-            var saturation = randomInt(30, 90);
+            var saturation = randomInt(50, 90);
             var light = randomInt(40, 70);
 
             return `hsl(${hue}deg ${saturation}% ${light}%)`;
         }
        
 
-        var color = prompt(`Choose your favorite primary or secondary color: \n e.g. ${colorList.join(", ")}`, 'red');
+        color = prompt(`Choose your favorite primary or secondary color: \n e.g. ${colorList.join(", ")}`, color);
 
         var colorInput = document.getElementById('color-input');
         var colorP = document.createElement('p');
@@ -78,19 +93,18 @@
         if ( colorList.indexOf(color.toLowerCase()) == -1 ) {
             var invalidColor = document.createTextNode('Your color was not in our list so we randomly selected a color for you. ');
             colorP.appendChild(invalidColor);
-            color = colorList[Math.floor(randomInt(0, colorList.length-1))];
         }
 
         colorP.appendChild(document.createTextNode(`Selected Color: ${color}`));
         colorInput.appendChild(colorP);
 
-        // "Paint" the canvas by generating 10 stripes with randomly selected colors
+        // "Paint" the canvas by generating stripes with randomly selected colors
         var canvas = document.getElementById('canvas');
         console.log(generateHslColor(color));
 
         canvas.style.backgroundColor = generateHslColor(color);
 
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 7; i++) {
             // Create stripe element
             let stripe = document.createElement('div');
             stripe.id = 'stripe' + i;
