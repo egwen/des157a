@@ -1,0 +1,321 @@
+h1, h2, p{
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    width: 100%;
+    height: auto;
+    background: linear-gradient(0deg, rgba(100,129,173,1) 0%, rgba(29,40,57,1) 100%);
+    display: flex;
+    justify-content: center;
+    font-family: "Montserrat";
+    font-weight: 400;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+footer {
+    background-color: #282828;
+    height: 100px;
+    width: 100vw;
+    position: absolute;
+    bottom:0;
+}
+
+/* classes for switching from input page to output page */
+.input {
+    background-color: #eaeaea;
+    max-width: 900px;
+    padding: 2.5% 15% 5% 15%;
+}
+
+h1 {
+    font-size: 3.5em;
+    font-weight: 700;
+}
+
+/* input page styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    margin: 1% 0%;
+    font-size: 1em;
+}
+
+input, select {
+    height: 30px;
+    width: 50%;
+    min-width: 225px;
+    max-width: 300px;
+    border-radius: 5px;
+    border: solid 1px rgb(124, 124, 124);
+    background-color: #eaeaea;
+    margin-bottom: 4px;
+}
+
+select {
+    height: 35px;
+    width: 51%;
+    min-width: 228px;
+    max-width: 305px;
+}
+
+input:focus, select:focus {
+    border: 3px solid #000;
+    outline: 0;
+}
+
+input[type="submit"] {
+    background-color: #2DCA61;
+    color: black;
+    border: 1px;
+    height: 40px;
+    width: 175px;
+    padding: 5px 10px;
+    border-radius: 100px;
+    font-weight: 700;
+    align-self: flex-end;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.01);
+}
+
+#input-page {
+    display: flex;
+    flex-direction: column;
+}
+
+#line {
+    width: 100%;
+    border-bottom: solid 1px #28282838;
+    margin: 5% 0%;
+}
+
+#animation {
+    position: absolute;
+    align-self: flex-end;
+    top: 20%;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#vinyl {
+    margin-bottom: 10%;
+}
+
+#vinyl:hover {
+    animation: spin 0.75s infinite linear;
+}
+
+#spotify-code:hover #code {
+    animation: load 4s forwards ease-out;
+}
+
+#spotify-code {
+    width: 210px;
+    height: 50px;
+    overflow: hidden;
+}
+
+#code, #code-loaded {
+    position: absolute;
+    width: 210px;
+}
+
+#code {
+    object-fit: cover;
+}
+
+/* Output page styling */
+.output {
+    background-color: #000;
+}
+
+nav {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    width: 35vw;
+}
+
+nav a {
+    text-decoration: none;
+    color:rgba(255, 255, 255, 0.6);
+    font-size: 2.5em;
+    font-weight: 700;
+    margin: 10%;
+}
+
+nav img {
+    margin-top: auto;
+    align-self: flex-end;
+    width: inherit;
+    height: inherit;
+    object-fit:contain;
+
+}
+
+#output-page {
+    display: none;
+    flex-direction: column;
+}
+
+#content {
+    display: flex;
+    flex-direction: row;
+    height: calc(100vh - 100px);
+}
+
+#lyrics {
+    background-color: #3D6675;
+    width: 100vw;
+    height: 90vh;
+    max-height: 650px;
+    overflow: scroll;
+    padding: 3% 15% 3% 8%;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.4em;
+    font-weight: 700;
+}
+
+#lyrics p {
+    line-height: 1.5em;
+}
+
+#lyrics p span, #song-title {
+    color: rgba(255, 255, 255, 1);
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 35%;
+}
+
+#credits {
+    position: absolute;
+    left: 2%;
+}
+
+#artist {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.9em;
+}
+
+#controls {
+    align-self: center;
+}
+
+@keyframes load {
+    0% { 
+        width: 210px; 
+        transform: translateX(0); 
+        object-position: 0px 0px;
+    }
+    100% { 
+        width: 0px; 
+        transform: translateX(210px); 
+        object-position: -210px 0px;
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
+
+@media only screen and (min-width: 900px) {
+    main.input {
+        width: 70vw;
+        padding: 2.5% 8%;
+    }
+
+    h1 {
+        font-size: 4em;
+    }
+
+    nav {
+        width: 300px;
+    }
+
+    #lyrics {
+        padding: 3% 15% 3% 10%;
+        font-size: 1.6rem;
+    }
+
+    #animation {
+        position: absolute;
+        align-self: flex-end;
+    }
+
+    #vinyl img {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+/* mobile */
+@media only screen and (max-width: 650px) {
+    h1 {
+        font-size: 4em;
+    }
+
+    #animation {
+        display: none;
+    }
+
+    /* Output mobile view  */
+    nav {
+        width: 100vw;
+        margin-top: 5vh;
+    }
+
+    nav a {
+        display: none;
+    }
+
+    nav img {
+        width: 70vw;
+        height: 70vw;
+        max-width: 300px;
+        max-height: 300px;
+    }
+
+    .output {
+        background: linear-gradient(0deg, rgba(61,102,117,0.31418504901960786) 0%, rgba(61,102,117,1) 100%);
+    }
+
+    #output-page {
+        width: 100vw;
+    }
+
+    #content {
+        width: 100vw;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: #000 1px;
+    }
+
+    #lyrics {
+        /* padding: 10% 20%; */
+        box-sizing: border-box;
+        background:none;
+        width: 65vw;
+        font-size: 1.2em;
+    }
+}

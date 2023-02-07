@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Normalize -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700" rel="stylesheet">
+
+    <!-- Styling -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- Script -->
+    <script src="script.js" defer></script>
+
+    <title>Mad Libs</title>
+</head>
+<body>
+    <main class="input">
+        <section id="input-page">
+            <header>
+                <h1>Mad Libs</h1>
+                <h2>Write a Serenade</h2>
+            </header>
+            <div id="animation" >
+                <img id="vinyl" src="./images/vinyl.png" alt="vinyl" >
+
+                <div id="spotify-code">
+                    <img id="code-loaded" src="./images/spotify-code-loaded.png" height="50" alt="spotify code with loaded colors" >
+                    <img id="code" src="./images/spotify-code-grey.png" height="50" alt="gray spotify code">
+                </div>
+            </div>
+            <form>
+                <label for="favorite-animal">Favorite Animal: </label>
+                <input type="Text" id="favorite-animal" required>
+
+                <label for="number">Number:</label>
+                <input type="number" id="number" required>
+
+                <label for="unit-of-time">Unit of time:</label>
+                <select id="unit-of-time" size="6" required >
+                    <option>seconds</option>
+                    <option>minutes</option>
+                    <option>hours</option>
+                    <option>days</option>
+                    <option>months</option>
+                    <option>years</option>
+                </select>
+
+                <label for="favorite-food">Favorite Food:</label>
+                <input type="Text" id="favorite-food" required>
+
+                <label for="color">Color:</label>
+                <input type="Text" id="color" required>
+
+                <label for="favorite-thing">Favorite Thing:</label>
+                <input type="Text" id="favorite-thing" required>
+
+                <label for="verb">Verb (ending in "-ing"): </label>
+                <input type="Text" id="verb" required>
+
+                <div id="line"></div>
+
+                <input type="submit" value="Generate Song">
+            </form>
+        </section>
+        <div id="output-page">
+            <div id="content">
+                <nav>
+                    <a href="#">Home</a>
+                    <img id="album-cover" src="images/album-cover.png" width="300" height="300" alt="girl running on a beach">
+                </nav>
+    
+                <div id="lyrics">
+                    <p>
+                        Lorem ipsum dolor sit amet, <span>favorite animal</span> adipiscing elit.
+                    </p>
+                    <p>
+                        Sed <span>number</span> <span>time</span> dolor nec lacus sollicitudin tempus.
+                    </p>
+                    <p>
+                        In tristique justo non <span>favorite food</span> porta porttitor. 
+                    </p>
+                    <p>
+                        Suspendisse mollis nisl <span>color</span> luctus iaculis. 
+                    </p>
+                    <p>
+                        Nam consequat, justo sed iaculis malesuada, lacus dolor <span>favorite food</span> sapien, at aliquam enim <span>verb</span> non est.
+                    </p>
+                </div>
+            </div>
+            <footer>
+                <div id="credits">
+                    <div id="song-title">Song Title</div>
+                    <div id="artist">Artist</div>
+                </div>
+                <div id="controls">
+                    <img src="images/skip-back.png" width="62" height="62" alt="skip back button">
+                    <img src="images/pause.png" width="53" height="53" alt="pause button">
+                    <img src="images/skip-forward.png" width="62" height="62" alt="skip forward button">
+                </div>
+            </footer>
+        </div>
+    </main>
+</body>
+</html>
