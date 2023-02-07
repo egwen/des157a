@@ -15,6 +15,9 @@
     <!-- Styling -->
     <link href="./style.css" rel="stylesheet">
 
+    <!-- Script -->
+    <script src="./script.js" defer></script>
+
 </head>
 <body>
     <header>
@@ -22,23 +25,32 @@
     </header>
 
     <main>
-        <article>
+        <article class="current-article" id="article2">
+            <div class="title">
+                <h2>Overlays Design</h2>
+                <h3>Best Practices for Overlays</h3>
+                <p class="date">7 Feburary 2023</p>
+            </div>
+            <div class="content">
+                <p>
+                    An overlay is an element that displays on top of the main window's content. Overlays are a way to simplify a webpage's UI and draw the user's focus to important information and interactions. Overlays typically disable the entire window and require user interaction to proceed. However, since overlays force the user to do something, if they are not used in the appropriate context with the proper layout, they can become tedious and annoying for users.
+                </p>
+                <p>
+                    The appropriate purpose of an overlay would be to show the user important or additional information. The best overlays only have vital information or prompt the user to input information required for the website's functionality. An example of appropriate content for an overlay would be a user's login and password, since that information is typically required for a website to fully function. Another appropriate context would be to provide additional content or information to the user without leaving the original page. For example, an overlay can be used to enlarge an image or video without leaving the original page. An overlay should have appropriate content to reduce the likelihood that users immediately dismiss the element or leave the page. 
+                </p>
+                <p>
+                    Designers should also consider effective UX principles so that users are more likely to interact with the overlay. The overlay should have a descriptive title so that the user understands the purpose of the element and its relation to the original page. Any buttons on the overlay should have labels that clearly reflect the purpose of the element. Since overlays disable the entire page, users should also be able to easily close the element by either a mouse or keyboard interaction. Overlays should also implement web accessibility principles like keyboard accessibility and ARIA tags. An overlay's design should be clear and understandable to users to reduce frustration and the likelihood that they dismiss the overlay completely.
+                </p>
+                <p><a href="https://uxplanet.org/best-practices-for-modals-overlays-dialog-windows-c00c66cddd8c" target="_blank">Source</a></p>
+            </div>
+        </article>
+        <article id="article1">
             <div class="title">
                 <h2>Form Design</h2>
                 <h3>Best Practices for Form Design</h3>
                 <p class="date">31 January 2023</p>
             </div>
             <div class="content">
-                <p>
-                    Forms are a primary method for websites to interact with users, so it is essential that forms are simple and straightforward, following the concept of “Less is More”. A form's simple design reflects the amount of information and effort required of the user and increases the likelihood that they interact with and complete the form. Both the quantity and quality of the form's inputs determines the usability of the form. 
-                </p>
-                <p>
-                    The overall form's structure should have minimal content and keep a simple layout to increase usability. The most basic approach to simplify a form is to minimize the number of inputs. However, in cases where the form must be long, designers should visually communicate the number of steps required so users know what to expect and are more likely to complete the form. The form should also progress from simple to complex questions so that users are less likely to abandon the form at the very beginning. The layout of the form should also maintain vertical visual flow with single columns. This reduces both the amount of vertical scrolling and avoids horizontal interruptions to the user's progress. 
-                </p>
-                <p>
-                    Each individual input field should also have a simple design with enough information for the user to understand the expected input. Labels and placeholder text are crucial components of information so users can fill out the form quickly without any mistakes. They should be placed close to the input field and should persist as the user types, especially for longer forms. Designers should also consider input type to optimize user navigation speed. Inputs that require multiple interactions can become tedious for users, decreasing usability.
-                </p>
-
                 <p>
                     Forms are a primary method for websites to interact with users, so it is essential that forms are simple and straightforward, following the concept of “Less is More”. A form's simple design reflects the amount of information and effort required of the user and increases the likelihood that they interact with and complete the form. Both the quantity and quality of the form's inputs determines the usability of the form. 
                 </p>
@@ -56,27 +68,19 @@
         </article>
 
         <section class="blog-posts">
-            <a href="#">
-                <div class="post">
-                    <h2>Form Design</h2>
-                    <h3>Best Practices for Form Design</h3>
-                    <p class="date">31 January 2023</p>
+            <a href="#" class="current-post">
+                <div class="post" id="post2">
+                    <h2>Overlays Design</h2>
+                    <h3>Best Practices for Modals / Overlays / Dialog Windows</h3>
+                    <p class="date">7 Feburary 2023</p>
                 </div>
             </a>
 
             <a href="#">
-                <div class="post">
-                    <h2>Overlays Design</h2>
-                    <h3>Best Practices for Overlays Design </h3>
-                    <p class="date">2 Feburary 2023</p>
-                </div>    
-            </a>
-
-            <a href="#">
-                <div class="post">
-                    <h2>Visual Thinking Strategies</h2>
-                    <h3>Best Practices for Visual Thinking </h3>
-                    <p class="date">7 Feburary 2023</p>
+                <div class="post" id="post1">
+                    <h2>Form Design</h2>
+                    <h3>Best Practices for Form Design</h3>
+                    <p class="date">31 January 2023</p>
                 </div>
             </a>
         </section>

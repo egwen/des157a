@@ -40,10 +40,19 @@ main {
 }
 
 article {
+    display: none;
+}
+
+.current-article {
+    display: block;
     padding: 5%;
     overflow: hidden;
     max-width: 500px;
     margin-right: auto;
+}
+
+.current-post {
+    opacity: 50%;
 }
 
 h2 {
@@ -71,8 +80,6 @@ a {
 
 .content p a {
     font-weight: 400;
-
-    /* font-size: 1em; */
     border-radius: 5px;
     padding: 0% 1%;
     margin-left: -1%;
@@ -83,7 +90,7 @@ a {
     background-color: #b9ac9d;
 }
 
-a:hover .post {
+a:not(.current-post):hover .post {
     border-left: solid rgb(0, 0, 0) 2px;
     margin-left: -5px
 }
@@ -107,8 +114,6 @@ a:hover .post {
     width: 175px;
     display: none;
     transition: all 0.2s ease-in-out;
-        /* margin-left 4s ease-in-out
-        border-width 4s ease-in-out; */
 }
 
 .post h2 {
@@ -124,10 +129,6 @@ a:hover .post {
 .post .date {
     margin-bottom: 0em;
 }
-
-/* Cormorant Garamond
-News Cycle
-Arsenal */
 
 @media only screen and (min-width: 900px) {
     header {
@@ -164,10 +165,6 @@ Arsenal */
     .content p {
         margin-top: 1.3em;
         font-weight: 300;
-    }
-    
-    .content a {
-        /* font-size: 1.3em; */
     }
 
     .blog-posts {
