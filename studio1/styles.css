@@ -1,37 +1,30 @@
-h1, h2, p{
+h1, h2, p {
     margin: 0;
     padding: 0;
 }
 
 body {
     width: 100%;
-    height: auto;
-    background: linear-gradient(0deg, rgba(100,129,173,1) 0%, rgba(29,40,57,1) 100%);
+    height: fit-content;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     font-family: "Montserrat";
     font-weight: 400;
+    background: linear-gradient(0deg, rgba(100,129,173,1) 0%, rgba(29,40,57,1) 100%);
 }
 
 main {
     width: 100vw;
-    height: 100vh;
     box-sizing: border-box;
 }
 
 footer {
-    background-color: #282828;
-    height: 100px;
-    width: 100vw;
     position: absolute;
     bottom:0;
-}
-
-/* classes for switching from input page to output page */
-.input {
-    background-color: #eaeaea;
-    max-width: 900px;
-    padding: 2.5% 15% 5% 15%;
+    height: 100px;
+    width: 100vw;
+    background-color: #282828;
 }
 
 h1 {
@@ -40,6 +33,14 @@ h1 {
 }
 
 /* input page styling */
+
+/* class for switching from input page to output page */
+.input {
+    max-width: 900px;
+    padding: 2.5% 12% 5% 12%;
+    background-color: #eaeaea;
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -53,38 +54,33 @@ label {
 }
 
 input, select {
-    height: 30px;
+    margin-bottom: 4px;
+    height: 35px;
     width: 50%;
     min-width: 225px;
     max-width: 300px;
     border-radius: 5px;
     border: solid 1px rgb(124, 124, 124);
-    background-color: #eaeaea;
-    margin-bottom: 4px;
-}
-
-select {
-    height: 35px;
-    width: 51%;
-    min-width: 228px;
-    max-width: 305px;
+    background-color: #eaeaea00;
+    transition: border 0.5s;
+    box-sizing: border-box;   
 }
 
 input:focus, select:focus {
-    border: 3px solid #000;
     outline: 0;
+    border: 3px solid #000;
 }
 
 input[type="submit"] {
-    background-color: #2DCA61;
-    color: black;
-    border: 1px;
+    align-self: flex-end;
     height: 40px;
     width: 175px;
     padding: 5px 10px;
+    border: 1px;
     border-radius: 100px;
     font-weight: 700;
-    align-self: flex-end;
+    background-color: #2DCA61;
+    color: black;
 }
 
 input[type="submit"]:hover {
@@ -98,31 +94,41 @@ input[type="submit"]:hover {
 
 #line {
     width: 100%;
-    border-bottom: solid 1px #28282838;
     margin: 5% 0%;
+    border-bottom: solid 1px #28282838;
 }
 
 #animation {
     position: absolute;
-    align-self: flex-end;
-    top: 20%;
-    width: 250px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    align-self: flex-end;
+    top: 20%;
+    width: 250px;
 }
 
 #vinyl {
     margin-bottom: 10%;
 }
 
-#vinyl:hover {
-    animation: spin 0.75s infinite linear;
+#animation.load #vinyl{
+    animation: play 8s cubic-bezier(1,0,.5,0.5);
 }
 
-#spotify-code:hover #code {
-    animation: load 4s forwards ease-out;
+
+#animation.load #code {
+    animation: load 5s forwards cubic-bezier(1,0,.5,.5);
+    /* animation: load 6s forwards ease-out; */
 }
+
+#vinyl:hover {
+    animation: spin 0.5s alternate ease-in-out infinite;
+}
+
+/* #spotify-code:hover #code {
+    animation: load 4s forwards ease-out;
+} */
 
 #spotify-code {
     width: 210px;
@@ -140,6 +146,7 @@ input[type="submit"]:hover {
 }
 
 /* Output page styling */
+/* class for switching from input page to output page */
 .output {
     background-color: #000;
 }
@@ -152,11 +159,11 @@ nav {
 }
 
 nav a {
+    margin: 10%;
     text-decoration: none;
-    color:rgba(255, 255, 255, 0.6);
     font-size: 2.5em;
     font-weight: 700;
-    margin: 10%;
+    color:rgba(255, 255, 255, 0.6);
 }
 
 nav img {
@@ -164,12 +171,12 @@ nav img {
     align-self: flex-end;
     width: inherit;
     height: inherit;
-    object-fit:contain;
-
+    object-fit: contain;
 }
 
+
 #output-page {
-    display: none;
+    display: none; /* Output page is automatically hidden */
     flex-direction: column;
 }
 
@@ -180,15 +187,15 @@ nav img {
 }
 
 #lyrics {
-    background-color: #3D6675;
-    width: 100vw;
-    height: 90vh;
-    max-height: 650px;
-    overflow: scroll;
     padding: 3% 15% 3% 8%;
-    color: rgba(255, 255, 255, 0.6);
+    width: 100vw;
+    height: 100%;
+    max-height: 700px;
+    overflow: scroll;
     font-size: 1.4em;
     font-weight: 700;
+    background-color: #3D6675;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 #lyrics p {
@@ -212,8 +219,8 @@ footer {
 }
 
 #artist {
-    color: rgba(255, 255, 255, 0.6);
     font-size: 0.9em;
+    color: rgba(255, 255, 255, 0.6);
 }
 
 #controls {
@@ -235,7 +242,12 @@ footer {
 
 @keyframes spin {
     0% { transform: rotate(0deg) }
-    100% { transform: rotate(360deg) }
+    100% { transform: rotate(60deg) }
+}
+
+@keyframes play {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(5400deg) }
 }
 
 @media only screen and (min-width: 900px) {
@@ -257,6 +269,10 @@ footer {
         font-size: 1.6rem;
     }
 
+    #lyrics p {
+        max-width: 400px;
+    }
+
     #animation {
         position: absolute;
         align-self: flex-end;
@@ -269,7 +285,7 @@ footer {
 }
 
 /* mobile */
-@media only screen and (max-width: 650px) {
+@media only screen and (max-width: 675px) {
     h1 {
         font-size: 4em;
     }
@@ -282,6 +298,9 @@ footer {
     nav {
         width: 100vw;
         margin-top: 5vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     nav a {
@@ -293,6 +312,11 @@ footer {
         height: 70vw;
         max-width: 300px;
         max-height: 300px;
+        align-self: center;
+        box-shadow: 0px 15px 10px 10px #3f6073d4;
+        /* box-shadow: 0px 10px 30px 10px rgba(117, 83, 61, 0.7); */
+        margin-bottom: 5px;
+        z-index: 1;
     }
 
     .output {
@@ -312,10 +336,12 @@ footer {
     }
 
     #lyrics {
-        /* padding: 10% 20%; */
         box-sizing: border-box;
         background:none;
-        width: 65vw;
+        width: 60vw;
         font-size: 1.2em;
+        padding: 0%;
+        padding-top: 20px;
+        max-width: 290px;
     }
 }

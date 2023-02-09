@@ -27,7 +27,7 @@
                 <h2>Write a Serenade</h2>
             </header>
             <div id="animation" >
-                <img id="vinyl" src="./images/vinyl.png" alt="vinyl" >
+                <img id="vinyl" src="./images/vinyl.png" alt="vinyl">
 
                 <div id="spotify-code">
                     <img id="code-loaded" src="./images/spotify-code-loaded.png" height="50" alt="spotify code with loaded colors" >
@@ -36,14 +36,14 @@
             </div>
             <form>
                 <label for="favorite-animal">Favorite Animal: </label>
-                <input type="Text" id="favorite-animal" required>
+                <input type="Text" id="favorite-animal">
 
                 <label for="number">Number:</label>
-                <input type="number" id="number" required>
+                <input type="number" id="number" >
 
-                <label for="unit-of-time">Unit of time:</label>
-                <select id="unit-of-time" required >
-                    <option label="Unit of time"></option>
+                <label for="time">Unit of time:</label>
+                <select id="time">
+                    <option label=""></option>
                     <option>seconds</option>
                     <option>minutes</option>
                     <option>hours</option>
@@ -53,16 +53,16 @@
                 </select>
 
                 <label for="favorite-food">Favorite Food:</label>
-                <input type="Text" id="favorite-food" required>
+                <input type="Text" id="favorite-food" >
 
                 <label for="color">Color:</label>
-                <input type="Text" id="color" required>
+                <input type="Text" id="color" >
 
                 <label for="favorite-thing">Favorite Thing:</label>
-                <input type="Text" id="favorite-thing" required>
+                <input type="Text" id="favorite-thing" >
 
                 <label for="verb">Verb (ending in "-ing"): </label>
-                <input type="Text" id="verb" required>
+                <input type="Text" id="verb" >
 
                 <div id="line"></div>
 
@@ -72,25 +72,25 @@
         <div id="output-page">
             <div id="content">
                 <nav>
-                    <a href="#">Home</a>
+                    <a href="#" id="home">Home</a>
                     <img id="album-cover" src="images/album-cover.png" width="300" height="300" alt="girl running on a beach">
                 </nav>
     
                 <div id="lyrics">
                     <p>
-                        Lorem ipsum dolor sit amet, <span>favorite animal</span> adipiscing elit.
+                        Lorem ipsum dolor sit amet, <span id="favorite-animal_output">favorite animal</span> adipiscing elit.
                     </p>
                     <p>
-                        Sed <span>number</span> <span>time</span> dolor nec lacus sollicitudin tempus.
+                        Sed <span id="number_output">number</span> <span id="time_output">time</span> dolor nec lacus sollicitudin tempus.
                     </p>
                     <p>
-                        In tristique justo non <span>favorite food</span> porta porttitor. 
+                        In tristique justo non <span id="favorite-food_output">favorite food</span> porta porttitor. 
                     </p>
                     <p>
-                        Suspendisse mollis nisl <span>color</span> luctus iaculis. 
+                        Suspendisse mollis nisl <span id="color_output">color</span> luctus iaculis. 
                     </p>
                     <p>
-                        Nam consequat, justo sed iaculis malesuada, lacus dolor <span>favorite food</span> sapien, at aliquam enim <span>verb</span> non est.
+                        Nam consequat, justo sed iaculis malesuada, lacus dolor <span id="favorite-thing_output">favorite thing</span> sapien, at aliquam enim <span id="verb_output">verb</span> non est.
                     </p>
                 </div>
             </div>
