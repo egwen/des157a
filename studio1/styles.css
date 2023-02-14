@@ -21,7 +21,7 @@ main {
 
 footer {
     position: absolute;
-    bottom:0;
+    bottom: 0;
     height: 100px;
     width: 100vw;
     background-color: #282828;
@@ -32,13 +32,23 @@ h1 {
     font-weight: 700;
 }
 
-/* input page styling */
+.hidden {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+}
 
+.showing {
+    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transition: all 1s;
+}
+
+/* input page styling */
 /* class for switching from input page to output page */
 .input {
-    max-width: 900px;
-    padding: 2.5% 12% 5% 12%;
-    background-color: #eaeaea;
+    background: linear-gradient(0deg, rgba(100,129,173,1) 0%, rgba(29,40,57,1) 100%);
 }
 
 form {
@@ -55,6 +65,7 @@ label {
 
 input, select {
     margin-bottom: 4px;
+    padding-left: 7px;
     height: 35px;
     width: 50%;
     min-width: 225px;
@@ -66,7 +77,7 @@ input, select {
     box-sizing: border-box;   
 }
 
-input:focus, select:focus {
+input:focus, select:focus, input[type="submit"]:focus {
     outline: 0;
     border: 3px solid #000;
 }
@@ -76,6 +87,7 @@ input[type="submit"] {
     height: 40px;
     width: 175px;
     padding: 5px 10px;
+    margin-right: 12.5px;
     border: 1px;
     border-radius: 100px;
     font-weight: 700;
@@ -83,18 +95,33 @@ input[type="submit"] {
     color: black;
 }
 
+#error-msg {
+    align-self: flex-end;
+    margin-right: 12.5px;
+    margin-bottom: 7px;
+    color: rgb(200 38 38);
+    opacity: 0;
+    transition: all 0.5s;
+}
+
 input[type="submit"]:hover {
     transform: scale(1.01);
 }
 
-#input-page {
+.input #input-page {
     display: flex;
     flex-direction: column;
+    background-color: #eaeaea;
+    max-width: 900px;
+    padding: 3% 10%;
+    box-sizing: border-box;
+    height: 100%;
+    margin: auto;
 }
 
 #line {
     width: 100%;
-    margin: 5% 0%;
+    margin: 3% 0%;
     border-bottom: solid 1px #28282838;
 }
 
@@ -106,6 +133,7 @@ input[type="submit"]:hover {
     align-self: flex-end;
     top: 20%;
     width: 250px;
+    transform: scale(1.1);
 }
 
 #vinyl {
@@ -116,19 +144,17 @@ input[type="submit"]:hover {
     animation: play 8s cubic-bezier(1,0,.5,0.5);
 }
 
-
 #animation.load #code {
     animation: load 5s forwards cubic-bezier(1,0,.5,.5);
-    /* animation: load 6s forwards ease-out; */
 }
 
 #vinyl:hover {
     animation: spin 0.5s alternate ease-in-out infinite;
 }
 
-/* #spotify-code:hover #code {
-    animation: load 4s forwards ease-out;
-} */
+#spotify-code:hover #code {
+    animation: glitch 0.5s alternate infinite ease-out;
+}
 
 #spotify-code {
     width: 210px;
@@ -174,10 +200,16 @@ nav img {
     object-fit: contain;
 }
 
-
-#output-page {
-    display: none; /* Output page is automatically hidden */
+.output #output-page {
+    /* visibility: hidden; Output page is automatically hidden */
+    /* opacity: 0; */
+    display: flex;
     flex-direction: column;
+}
+
+.input #output-page {
+    display: none;
+    /* animation: fadeOut 2s; */
 }
 
 #content {
@@ -190,12 +222,13 @@ nav img {
     padding: 3% 15% 3% 8%;
     width: 100vw;
     height: 100%;
-    max-height: 700px;
+    max-height: calc(100vh - 100px);
     overflow: scroll;
     font-size: 1.4em;
     font-weight: 700;
     background-color: #3D6675;
     color: rgba(255, 255, 255, 0.6);
+    box-sizing: border-box;
 }
 
 #lyrics p {
@@ -225,6 +258,13 @@ footer {
 
 #controls {
     align-self: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#skip-back {
+    opacity: 50%;
 }
 
 @keyframes load {
@@ -240,6 +280,15 @@ footer {
     }
 }
 
+@keyframes glitch {
+    0% { 
+        opacity: 100%;
+    }
+    100% { 
+        opacity: 60%;
+    }
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg) }
     100% { transform: rotate(60deg) }
@@ -250,11 +299,26 @@ footer {
     100% { transform: rotate(5400deg) }
 }
 
+@keyframes fadeOut {
+    0% { opacity: 1;
+        visibility: visible;
+
+    }
+    100% { 
+        opacity: 0;
+        display: none;
+        visibility: hidden;
+    }
+}
+
 @media only screen and (min-width: 900px) {
     main.input {
         width: 70vw;
-        padding: 2.5% 8%;
+        min-height: 100vh;
+
     }
+
+
 
     h1 {
         font-size: 4em;
@@ -262,6 +326,11 @@ footer {
 
     nav {
         width: 300px;
+    }
+
+    #input-page {
+        width: 70vw;
+
     }
 
     #lyrics {
@@ -276,6 +345,9 @@ footer {
     #animation {
         position: absolute;
         align-self: flex-end;
+        top: 25%;
+        width: 250px;
+        transform: scale(1.25);
     }
 
     #vinyl img {
@@ -285,7 +357,7 @@ footer {
 }
 
 /* mobile */
-@media only screen and (max-width: 675px) {
+@media only screen and (max-width: 650px) {
     h1 {
         font-size: 4em;
     }
@@ -313,15 +385,48 @@ footer {
         max-width: 300px;
         max-height: 300px;
         align-self: center;
-        box-shadow: 0px 15px 10px 10px #3f6073d4;
         /* box-shadow: 0px 10px 30px 10px rgba(117, 83, 61, 0.7); */
         margin-bottom: 5px;
         z-index: 1;
     }
 
-    .output {
-        background: linear-gradient(0deg, rgba(61,102,117,0.31418504901960786) 0%, rgba(61,102,117,1) 100%);
+    body {
+        background-color: black;
     }
+    .output {
+        /* background: linear-gradient(0deg, rgba(61,102,117,0.30) 0%, rgba(61,102,117,1) 100%); */
+    }
+
+    /* Album Styling for mobile view */
+    .album1 {
+        background: linear-gradient(0deg, rgba(61,102,117,0.30) 0%, rgba(61,102,117,1) 100%);
+    }
+    nav img.album1 {
+        box-shadow: 0px 15px 10px 10px #2D4A54d4;
+    }
+    .album2 {
+        /* background-color: #000; */
+        background: linear-gradient(0deg, rgba(64,51,40,1) 0%, rgba(135,118,103,1) 100%);
+    }
+    nav img.album2 {
+        box-shadow: 0px 15px 10px 10px #6F5A4Cd4;
+    }
+    .album3 {
+        background: linear-gradient(0deg, rgba(77,52,67,1) 0%, rgba(122,91,109,1) 100%);
+    }
+    nav img.album3 {
+        box-shadow: 0px 15px 10px 10px #694D5Ed4;
+    }
+    .album4 {
+        background: linear-gradient(0deg, rgba(30,36,13,1) 0%, rgba(74,88,32,1) 100%);
+    }
+    nav img.album4 {
+        box-shadow: 0px 15px 10px 10px #3A451Cd4;
+    }
+    
+
+
+    
 
     #output-page {
         width: 100vw;
@@ -341,7 +446,7 @@ footer {
         width: 60vw;
         font-size: 1.2em;
         padding: 0%;
-        padding-top: 20px;
+        padding: 20px 0px;
         max-width: 290px;
     }
 }

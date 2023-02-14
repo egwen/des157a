@@ -21,10 +21,10 @@
 </head>
 <body>
     <main class="input">
-        <section id="input-page">
+        <section id="input-page" class="showing">
             <header>
                 <h1>Mad Libs</h1>
-                <h2>Write a Serenade</h2>
+                <h2>Write the Perfect Serenade</h2>
             </header>
             <div id="animation" >
                 <img id="vinyl" src="./images/vinyl.png" alt="vinyl">
@@ -34,65 +34,50 @@
                     <img id="code" src="./images/spotify-code-grey.png" height="50" alt="gray spotify code">
                 </div>
             </div>
-            <form>
-                <label for="favorite-animal">Favorite Animal: </label>
+            <form autocomplete="off">
+                <label for="name">Your Name: </label>
+                <input type="Text" id="name">
+
+                <label for="favorite-animal">Favorite Animal (Singular): </label>
                 <input type="Text" id="favorite-animal">
 
                 <label for="number">Number:</label>
-                <input type="number" id="number" >
+                <input type="number" id="number">
 
-                <label for="time">Unit of time:</label>
+                <label for="time">Time:</label>
                 <select id="time">
-                    <option label=""></option>
-                    <option>seconds</option>
-                    <option>minutes</option>
-                    <option>hours</option>
-                    <option>days</option>
-                    <option>months</option>
-                    <option>years</option>
+                    <option label=" "></option>
+                    <option>second</option>
+                    <option>minute</option>
+                    <option>hour</option>
+                    <option>day</option>
+                    <option>month</option>
+                    <option>year</option>
                 </select>
 
-                <label for="favorite-food">Favorite Food:</label>
-                <input type="Text" id="favorite-food" >
-
                 <label for="color">Color:</label>
-                <input type="Text" id="color" >
+                <input type="Text" id="color">
 
-                <label for="favorite-thing">Favorite Thing:</label>
-                <input type="Text" id="favorite-thing" >
+                <label for="adj">Adjective: </label>
+                <input type="Text" id="adj">
 
-                <label for="verb">Verb (ending in "-ing"): </label>
-                <input type="Text" id="verb" >
+                <label for="favorite-thing">Favorite Thing (Singular):</label>
+                <input type="Text" id="favorite-thing">
 
                 <div id="line"></div>
-
+                <div id="error-msg">Please provide a word for every category.</div>
                 <input type="submit" value="Generate Song">
+
             </form>
         </section>
-        <div id="output-page">
+        <div id="output-page" class="hidden">
             <div id="content">
                 <nav>
                     <a href="#" id="home">Home</a>
-                    <img id="album-cover" src="images/album-cover.png" width="300" height="300" alt="girl running on a beach">
+                    <img id="album-cover" src="images/album-cover1.png" width="300" height="300" alt="girl running on a beach">
                 </nav>
     
-                <div id="lyrics">
-                    <p>
-                        Lorem ipsum dolor sit amet, <span id="favorite-animal_output">favorite animal</span> adipiscing elit.
-                    </p>
-                    <p>
-                        Sed <span id="number_output">number</span> <span id="time_output">time</span> dolor nec lacus sollicitudin tempus.
-                    </p>
-                    <p>
-                        In tristique justo non <span id="favorite-food_output">favorite food</span> porta porttitor. 
-                    </p>
-                    <p>
-                        Suspendisse mollis nisl <span id="color_output">color</span> luctus iaculis. 
-                    </p>
-                    <p>
-                        Nam consequat, justo sed iaculis malesuada, lacus dolor <span id="favorite-thing_output">favorite thing</span> sapien, at aliquam enim <span id="verb_output">verb</span> non est.
-                    </p>
-                </div>
+                <div id="lyrics"></div>
             </div>
             <footer>
                 <div id="credits">
@@ -100,9 +85,9 @@
                     <div id="artist">Artist</div>
                 </div>
                 <div id="controls">
-                    <img src="images/skip-back.png" width="62" height="62" alt="skip back button">
-                    <img src="images/pause.png" width="53" height="53" alt="pause button">
-                    <img src="images/skip-forward.png" width="62" height="62" alt="skip forward button">
+                    <img src="images/skip-back.png" id="skip-back" width="50" height="50" alt="skip back button">
+                    <img src="images/pause.png" width="53" height="46" alt="pause button">
+                    <img src="images/skip-forward.png" id='skip-forward' width="50" height="50" alt="skip forward button">
                 </div>
             </footer>
         </div>
