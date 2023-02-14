@@ -58,7 +58,7 @@
             'My <span id="favorite-animal_output"></span>,<br> you bring joy to my day,<br> my love for you will never go away.'
         ],
         'number-time': [
-            'Every <span id="number_output" class="number-sensitive"></span> <span id="time_output"></span> spent with you is a blessing<br> Together, our love will keep us confessing',
+            'Every <span id="number_output"></span> <span id="time_output" class="number-sensitive"></span> spent with you is a blessing<br> Together, our love will keep us confessing',
             'With you, my heart beats <span id="number_output"></span> times every <span id="time_output"></span> that passes.',
             'Every moment with you feels like <span id="number_output"></span> <span id="time_output" class="number-sensitive"></span> of the perfect dream'
         ],

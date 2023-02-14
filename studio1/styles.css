@@ -263,6 +263,10 @@ footer {
     justify-content: center;
 }
 
+#skip-forward {
+    cursor: pointer;
+}
+
 #skip-back {
     opacity: 50%;
 }
