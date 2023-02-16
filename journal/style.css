@@ -1,6 +1,12 @@
-h1, h2, h3, ul, li, p{
+h1, h2, h3, ul, li, p, figure{
     margin: 0;
     padding: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
 }
 
 body {
@@ -69,6 +75,10 @@ p {
     font-size: 1em;
     margin-bottom: 0.75em;
     font-weight: 300;
+}
+
+figure {
+    margin-top: 1.3em;
 }
 
 a {
