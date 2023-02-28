@@ -132,7 +132,7 @@
 
             let loader = document.getElementById('loader');
             loader.className = 'showing';
-            loader.style.backgroundImage = `url('images/v${counter}.gif')`
+            loader.style.backgroundImage = `url('images/V${counter}.gif')`
 
             setTimeout( () => {
 
