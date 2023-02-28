@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every Picture</title>
+
+    <!-- Normalize -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Styling -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- Script -->
+    <script src="./script.js" defer></script>
+
+</head>
+<body>
+    <div id="stripes">
+        <div class="s1"></div>
+        <div class="s2"></div>
+        <div class="s3"></div>
+        <div class="s4"></div>
+    </div>
+    <main>
+		<section id="sect1">
+			<article>
+				<h1>Every Picture</h1>
+				<p></p>
+			</article>
+		</section>
+
+		<section id="second">
+			<article>
+				<h2>V2</h2>
+				<p>This V2 route is a fun beginner climb that I completed in December 2022. The moves do not require complex techniques but shorter climbers (me) may find it more difficult to reach the top, especially if they are scared of heights (also me). </p>
+			</article>
+		</section>
+
+		<section id="third">
+			<article>
+				<h2>V3</h2>
+				<p>This V3 route requires a bit more strength and technique than the V2. I "flashed" or completed the problem on my first attempt in February 2023. This is also a 'top-out' route, which usually involves less stable footholds and the risk of slamming your face on the wall.</p>
+			</article>
+		</section>
+
+		<section id="fourth">
+			<article>
+				<h2>V4</h2>
+				<p>This V4 route is a dynamic problem that requires jumping for the next hold and potentially running into the wall. I did not complete this route because I am not flexible and I didn't want to embarrass myself.</p>
+			</article>
+		</section>
+	</main>
+
+    <input type="image" id="close-overlay" class="hidden" alt="expand"
+    src="images/overlay-open.png">
+
+    <section id="overlay" class="hidden">
+        <div>
+            <video autoplay muted controls loop src="videos/v2.webm">
+            </video>
+            <div id="loader" class="showing"></div>
+        </div>
+        
+    </section>
+
+    <div id="container">
+        <img src="images/pacpipe.png" alt="pacific pipe" class="sect1">
+    </div>
+   
+    <div id="preloader">
+		<div>
+			<div>Please wait for the page to load</div>
+            <div id="loading-stripes">
+                <div class="s1"></div>
+                <div class="s2"></div>
+                <div class="s3"></div>
+                <div class="s4"></div>
+            </div>
+            
+		</div>
+	</div>
+</body>
+</html>
