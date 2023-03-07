@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Parenthood</title>
+
+    <!-- Normalize -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?&family=Baskervville&display=swap" rel="stylesheet">
+
+    <!-- Styling -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- Script -->
+    <script src="./script.js" defer></script>
+
+</head>
+<body>
+    <header>
+        <h1>Plant Parenthood</h1>
+        <h2>Can you keep the plant alive?</h2>
+    </header>
+    <section class="hidden" id="overlay">
+        <article id="welcome" class="showing">
+            <h1>Congrats! It's a plant!</h1>
+            <p>Welcome to the wonderful world of parenthood! Your best friend has entrusted you to take care of their plant while they are out of town. You have to watch it for 30 days and try to keep it alive and healthy. Each day, you can either give the plant an assortment of random resources or nothing. Don't worry, you're just taking care of their emotional support plant and their favorite thing in the whole entire world. Good luck and no pressure!</p>
+            <button class="start-game">Start Game!</button>
+        </article>
+
+        <article id="end-survive" class="hidden">
+            <h1>Congrats! Your plant survived!</h1>
+            <p>Wow you are such a good friend! Your friend trusts you to take care of their plant. Maybe one day you will have a plant of your own.</p>
+            <button class="start-game">Start a New Game!</button>
+        </article>
+
+        <article id="end-dead" class="hidden">
+            <h1>Uh Oh...</h1>
+            <p>Maybe go run to the store and get a new emotional support plant before your friend gets back in town...</p>
+            <button class="start-game">Start a New Game!</button>
+
+        </article>
+    </section>
+    <main>
+        <section id="plant">
+            <div id="plant-visual">
+                <img src="images/plant1.png" alt="plant">
+            </div>
+            <div id="plant-health">
+                <!-- <span id="health-stats"></span> -->
+                <div id="health-bar">
+                    <div id="bar-fill"></div>
+                    <div id="bar-outline" class="outline">OK</div>
+                </div>
+                <div id="health-overlay" class="hidden">
+                    <div >
+                        <img src="images/water1.png" alt="water">
+                        <span id="water-stat"></span>
+                        <!-- <div id="water-fill" class="fill"></div>
+                        <div id="water-outline" class="outline"></div>
+                        <div id="water-dot" class="dot"></div> -->
+                    </div>
+                    <div>
+                        <img src="images/sun1.png" alt="sun"> 
+                        <span id="sun-stat"></span>
+
+                        <!-- <div id="sun-fill" class="fill"></div>
+                        <div id="sun-outline" class="outline"></div>
+                        <div id="sun-dot" class="dot"></div> -->
+                    </div>
+                    <div>
+                        <img src="images/fertilizer1.png" alt="fertilizer">
+                        <span id="fertilizer-stat"></span>
+                        <!-- <div id="fertilizer-fill" class="fill"></div>
+                        <div id="fertilizer-outline" class="outline"></div>
+                        <div id="fertilizer-dot" class="dot"></div> -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="game">
+            <div id="day">Day</div>
+            <div id="date">
+                <div id="date1" class="card"></div>
+                <div id="date2" class="card"></div>
+            </div>
+            <div id="resources">
+                <div id="resource1" class="card"></div>
+                <div id="resource2" class="card"></div>
+            </div>
+            <div id="action-area">
+                <button id="start-btn">Start Day!</button>
+                <button id="pass" class="hidden">Pass</button>
+                <button id="roll" class="hidden">Roll!</button>
+            </div>
+        </section>
+    </main>
+    <footer><a href="sources.html">Sources</a></footer>
+</body>
+</html>
