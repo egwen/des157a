@@ -152,9 +152,18 @@
 
         // Remove images for resource cards
         resourceCardsFront.forEach( (card) => {
-            if (card.firstChild) {
-                card.removeChild(card.firstChild);
-            }
+            card.style.animation = '0.5s flipUp 0.5s linear forwards'
+
+            card.addEventListener('animationend', (e) => {
+                if (card.firstChild) {
+                    card.removeChild(card.firstChild);
+                }
+                card.style.animation = '';
+               
+    
+            })
+            
+
         })
 
         // Each resource has a probability of depleting by 1 or 2 (See depletionRate for exact probabilities)

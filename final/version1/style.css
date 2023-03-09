@@ -272,7 +272,7 @@ div#bar-fill {
 
 #resources .front {
     transform-origin: top;
-    transform: rotateX('90deg');
+    transform: rotateX(90deg);
 }
 
 
