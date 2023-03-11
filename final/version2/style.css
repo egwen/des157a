@@ -1,0 +1,410 @@
+* {
+    box-sizing: border-box;
+}
+
+h1, h2 {
+    margin: 0;
+}
+
+body {
+    background-color: #2E5331;
+    font-family: "Baskerville";
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+header, main {
+    display: flex;
+    width: 65vw;
+    max-width: 1000px;
+}
+
+header, footer a {
+    flex-direction: column;
+    color: #F2EEE9;
+    margin: 3%;
+}
+
+main {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer {
+    position: absolute;
+    bottom: 3%;
+}
+
+footer a{
+    text-decoration: none;
+    
+}
+
+h1, h2 {
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 3em;
+}
+h2 {
+    font-size: 2em;
+}
+
+main section {
+    min-width: 25vw;
+    height: 70vh;
+    max-height: 500px;
+    background-color: #F2EEE9;
+    display: flex;
+}
+
+
+#overlay {
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: all 1s ease;
+}
+
+#overlay.showing {
+}
+
+#overlay article {
+    box-sizing: border-box;
+    background-color: #F2EEE9;
+    padding: 50px;
+    width: 50vw;
+    height: 80vh;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    /* align-items: center; */
+    flex-direction: column;
+
+}
+
+#overlay p {
+    font-size: 1.3em;
+    line-height: 1.5em;
+}
+
+#overlay button {
+    width: 300px;
+    align-self: center;
+}
+/* #overlay {
+    position: absolute;
+    
+    top: 50%;
+    left: 50%;
+    width: 70vw;
+    height: 75vh;
+    transition: all 1s ease;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    color: black;
+    padding: 5%;
+    
+    border: 3px solid black;
+} */
+
+#plant {
+    width: 35vw;
+    min-width: 415px;
+    max-width: 515px;
+    color: black;
+    border-radius: 50% 50% 20% 20%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#plant-visual img {
+    height: 50vh;
+    max-height: 375px;
+}
+
+#plant-health {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#health-bar {
+    border-radius: 50px;    
+    width: 25vw;
+    max-width: 400px;
+    height: 30px;
+}
+
+#plant:hover #health-overlay {
+    transform: translateY(-100%);
+}
+
+#health-bar div {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    max-width: 400px;
+    border-radius: 50px;    
+}
+
+#health-overlay {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    transition: all 1s ease;
+    padding: 1em;
+}
+
+#health-overlay div {
+    height: 30px;
+}
+
+#health-overlay img {
+    /* width: 30px; */
+    height: 50px;
+}
+
+#health-overlay span {
+    text-align: center;
+    font-weight:bold;
+    font-size: 1.2em;
+}
+
+#health-overlay > div {
+    margin: 1em;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+    /* color: #F2EEE9 */
+}
+
+
+.outline {
+    border-radius: 50px;    
+    border: solid black 1px;
+    position: absolute;
+
+}
+
+.fill {
+    transition: all 3s ease;
+    background-color: blue;
+    position: absolute;
+
+}
+
+#bar-outline {
+    border-radius: 50px;    
+    border: solid black 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+}
+
+div#bar-fill {
+    background-color: #F2EEE9;
+    width: calc(20vw * 0.95);
+    transition: all 2s ease;
+
+}
+
+#game {
+    width: 20vw;
+    background-color: #2E5331;
+    /* border: solid 1px #F2EEE9; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#game div {
+    display: flex;
+}
+
+.card, .card div {
+    width: 115px;
+    height: 144px;
+    border: solid 1px black;
+    margin: 1px;
+    border-radius: 5px;
+    color: black;
+}
+
+.card {
+    position: relative;
+}
+
+.card div {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.front {
+    background-color: #F2EEE9;
+    z-index: 3;
+}
+
+#date .front {
+    transform-origin: bottom;
+    background-color: #E0D7CC;
+}
+
+#resources .card div {
+    transform-origin: top;
+}
+
+#resources .front {
+    transform: rotateX(90deg);
+}
+
+
+#day {
+    width: 270px;
+    height: 60px;
+    background-color: #563526;
+    color: #F2EEE9;
+    border: 1px black solid;
+    border-radius: 5px;
+    font-size: 2em;
+    padding: 1%;
+    align-items: center;
+    justify-content: center;
+}
+
+#resources {
+    transform: translateY(-18px);
+}
+
+#date .card {
+    background-color: #E0D7CC;
+    font-size: 88px;
+    align-items: center;
+    justify-content: center;
+}
+
+#loops {
+    z-index: 3;
+    transform: translateY(-9px);
+}
+
+@keyframes flipDown {
+    0% { 
+        z-index: 1;
+        transform: rotateX(0deg);
+    }
+    97% {
+        z-index: 4;
+    }
+    100% { 
+        transform: rotateX(90deg);
+        z-index: 1;
+    }
+}
+
+@keyframes flipUp {
+    0% { 
+        transform: rotateX(90deg);
+    }
+    100% { 
+        transform: rotateX(0deg);
+    }
+}
+
+#resources .card {
+    background-color: #F2EEE9;
+    align-items: center;
+    justify-content: center;
+}
+
+#resources img {
+    width: 65px;
+    object-fit: contain;
+}
+
+#action-area {
+    width: 100%;
+    justify-content: center;
+}
+
+button {
+    padding: 15px 25px;
+    margin: 15px 5px;
+    border-radius: 50px;
+    border: 1px solid black;
+    font-size: 1.4em;
+}
+
+button:hover {
+    transform: scale(1.04);
+}
+
+#start-btn {
+    position: absolute;
+}
+
+#roll, #pass:hover {
+    background-color: #F2EEE9;
+    color:black;
+}
+
+#pass, #roll:hover {
+    background: transparent;
+    color:#F2EEE9;
+    border-color: #F2EEE9
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    z-index: -1;
+}
+
+.showing {
+    visibility: visible;
+    opacity: 1;
+    /* display: flex; */
+}
+
+section.showing {
+    z-index: 5;
+}
+
+
+/* Styling for Sources page */
+.sources section {
+    flex-direction: column;
+    padding: 5%;
+    border-radius: 3%;
+    width:100%;
+}
+
+.sources p {
+    padding-left: 10%;
+}
+
+.sources footer{
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
