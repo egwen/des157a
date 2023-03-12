@@ -151,12 +151,17 @@ main section {
     transform: translateY(-100%);
 }
 
+#health-overlay.showing {
+    transform: translateY(-100%);
+}
+
 #health-bar div {
     position: absolute;
     width: inherit;
     height: inherit;
     max-width: 400px;
-    border-radius: 50px;    
+    border-radius: 50px; 
+    transition: all 1s ease;   
 }
 
 #health-overlay {
@@ -327,6 +332,31 @@ div#bar-fill {
     }
     100% { 
         transform: rotateX(0deg);
+    }
+}
+
+@keyframes increment{
+    0% {
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.2);
+        color: green;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+@keyframes decrement{
+    0% {
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.2);
+        color: red;
+    }
+    100% {
+        transform: scale(1);
     }
 }
 
