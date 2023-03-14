@@ -455,7 +455,9 @@
 
     function hideOverlay() {
         document.querySelector('main').className = 'showing';
-
+        document.querySelectorAll('#overlay article').forEach((page) => {
+            page.className = 'hidden';
+        });
         overlay.className = 'hidden';
 
     }
