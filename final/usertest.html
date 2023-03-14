@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Testing</title>
+
+    <!-- Normalize -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?&family=Baskervville&display=swap" rel="stylesheet">
+
+    <!-- Styling -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- Script -->
+    <script src="./script.js" defer></script>
+
+</head>
+<body>
+    
+    
+    <main class="user-test">
+        <header>
+            <h1>User Testing</h1>
+        </header>
+        <section>
+            <article>
+                <h2>Tasks</h2>
+                <ol>
+                    <li>Start the game and state how much water the plant has at the beginning of Day 1</li>
+                    <li>Feed the plant and state how much the plant's water has changed.</li>
+                    <li>Play the game until Day 7. Turn off the sound effects and return to the game</li>
+                    <li>Complete the game and start a new game.</li>
+                </ol>
+            </article>
+            <article>
+                <h2>Observations</h2>
+                <ol>
+                    <li>Instructions:
+                        <p>
+                            I noticed that users were confused about the purpose of the game from the instructions overlay. This was either because the instructions were too long so they did not read through it or because the important parts of the instructions did not stand out from the context of the introduction. Users  spent at most 5 seconds reading the instructions before beginning the game. Users also did not click the "?" button if they were confused about the game because they wanted to figure it out from playing or they did not know the instructions are opened by that button.
+                        </p>
+                        <p>
+                            <span>Plan:</span> I aim to improve the instruction overlay by separating the context of the game with the gameplay instructions. Currently, the instructions are intertwined with the context but users are confused about what content is related to the game play and are more likely to miss important information. By separating the instructions onto a different page, I can add more informaiton without making the welcome overlay too crowded and overwelming for users. 
+                        </p>
+                    </li>
+                    <li>Visual Feedback:
+                        <p>
+                            Users liked the visual cues related to how the plant's health changed as each value changed, like how the icons pop out as it increments or decrements. However, users were confused by how the resource values connected to the plant's overall health. They were not sure if they needed to get the highest number or a specific amount would qualify as "winning" the game so the goal of the game was unclear. One user confused the health bar with a button because the styling was similar so they recommended making it look more distinct as a progress bar instead of a button.
+                        </p>
+                        <p>
+                            <span>Plan:</span> I plan on adding progress bars that show the optimal range for each resource so that users know what values to aim for. A simple solution to this would be to tell the users the resource values for the "perfect" health so their goal is to maintain those values. A more effective solution would be to add a visual that updates every day. This reduces memory load so that users do not have to remember the "perfect" amount for three different resources.  
+                        </p>
+                    </li>
+                    <li>Restarting the Game:
+                        <p>
+                            Because users were not sure when the game would end, they were confused about how to start a new game. One user reloaded the game to restart and another clicked through the settings to try to find a restart button. A user suggested having a restart button somewhere on the settings page so that it is accessible during gameplay instead of at the end of the game.
+                        </p>
+                        <p>
+                            <span>Plan:</span> I plan on implementing several features so that the gameplay is more clear. My first goal is to add a "restart" button that is available on the screen throughout the game or on the settings page. I also want to switch the calendar counter so that it counts down instead of up so that users are less confused about when the game ends, reducing the need for them to restart the game or reload the page. 
+                        </p>
+                    </li>
+                </ol>
+            </article>
+        </section>
+        <section >
+            <h2>Users</h2>
+            <article id="user-images">
+                <img src="images/IMG_3706.JPG" alt="user1">
+                <img src="images/IMG_3707.JPG" alt="user2">
+                <img src="images/IMG_3708.JPG" alt="user3">
+            </article>
+           
+        </section>
+    </main>
+</body>
+</html>

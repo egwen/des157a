@@ -9,7 +9,7 @@ img {
     height: auto;
 }
 
-body {
+body.brief-style {
     font-family: "Poppins";
     color:black;
     background-color: #e0d0bf;
@@ -20,7 +20,7 @@ body {
     padding: 0 20vw;
 }
 
-header {
+.brief-style header {
     position: fixed;
     top: 0;
     max-width: 900px;
@@ -33,11 +33,11 @@ header {
     font-size: 1.5em;
 }
 
-h1 {
+.brief-style h1 {
     font-size: 150%;
 }
 
-main {
+.brief-style main {
     display: flex;
     margin-top: 10vh;
     max-width: 900px;
@@ -45,19 +45,19 @@ main {
     line-height: 1.45em;
 }
 
-article {
+.brief-style article {
     display: block;
     padding: 5%;
     overflow: hidden;
     max-width: 500px;
 }
 
-h2 {
+.brief-style h2 {
     font-size: 1.5em;
     margin-bottom: 0.3em
 }
 
-h3 {
+.brief-style h3 {
     font-size: 1.2em;
     margin-bottom: 0.3em;
 }
@@ -66,7 +66,7 @@ h3 {
     margin-top: 2em;
 }
 
-p {
+.brief-style p {
     font-size: 1em;
     margin-bottom: 0.75em;
     font-weight: 300;
@@ -132,30 +132,30 @@ a:not(.current-post):hover .post {
 }
 
 @media only screen and (min-width: 900px) {
-    header {
+    .brief-style header {
         font-size: 2em;
         padding: 1.5% 0% 1.5% 2%;
     }
 
-    main {
+    .brief-style main {
         margin-top: 13vh;
     }
 
-    h1 {
+    .brief-style h1 {
         font-size: 1.8em;  
     }
 
-    h2 {
+    .brief-style h2 {
         font-size: 2em;
         margin-bottom: 0.3em;
     }
     
-    h3 {
+    .brief-style h3 {
         font-size: 1.5em;
         margin-bottom: 0.2em;
     }
     
-    p {
+    .brief-style p {
         font-size: 1.3em;
     }
     
@@ -179,11 +179,122 @@ a:not(.current-post):hover .post {
 }
 
 @media only screen and (max-width: 460px) {
-    header {
+    .brief-style header {
         font-size: 1.2em;
         padding: 1.5% 0% 1.5% 0%;
     }
-    main {
+    .brief-style main {
         margin-top: 10vh;
     }
+}
+
+/* Styling for usertest.html */
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, p, ol, li{
+    margin: 0;
+}
+
+body {
+    background-color: #2E5331;
+    font-family: "Baskerville";
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-height: 750px;
+    overflow: scroll;
+}
+
+main {
+    display: flex;
+    width: 65vw;
+    max-width: 850px;
+    height: 100%;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    background-color: #F2EEE9;
+    padding: 3% 7%;
+}
+
+header {
+    flex-direction: column;
+}
+
+h1, h2, h3 {
+    font-weight: normal;
+    margin: 0.25em 0em;
+}
+
+h1 {
+    font-size: 2em;
+}
+h2 {
+    font-size: 1.5em;
+}
+
+/* h3 {
+    font-size: 1.5em;
+} */
+
+ol, li, p {
+    font-size: 1.2em;
+}
+
+.user-test p {
+    color:rgb(109, 109, 109);
+}
+
+.user-test span {
+    color: black;
+}
+li>p {
+    font-size: 1em;
+    line-height: 1.3em;
+    margin: 0.25em 0em;
+
+}
+
+
+
+.user-test main section {
+    height: 70vh;
+    background-color: #F2EEE9;
+    display: flex;
+    color: black;
+}
+
+
+.user-test article {
+    background-color: #F2EEE9;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+#user-images {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
+
+.user-test img {
+    height: 150px;
+}
+
+
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 0;
+}
+
+.showing {
+    visibility: visible;
+    opacity: 1;
+    z-index: 2;
 }
