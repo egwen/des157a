@@ -4,9 +4,18 @@
 
     let gameStarted = false;
 
+    // Default settings are all on
+    let toggleValues = {
+        singlePlayer: true,
+        soundOn: true,
+        animationOn: true
+    }
+
+
     // Sound effects
     const plantSound = new Audio('sounds/plant.wav');
-    const buttonSound = new Audio('sounds/button.wav');
+    const buttonSound = new Audio('sounds/click.wav');
+    const flipPage = new Audio('sounds/flip-page.wav');
 
     const healthColors = ['663C37', '8A463C', 'C05D47', 'DA7E56', 'E1B050', 'EECB4F', 'EBEE4F', 'D8EE4F', '9FEE4F', '55E452'];
     const healthText = ['Um...', 'Uh Oh...', 'Meh','OK','Good','Great!']
@@ -24,6 +33,12 @@
     // Overlay
     const overlay = document.getElementById('overlay');
     const startGameBtns = document.querySelectorAll('.start-game');
+    const settingBtns = document.querySelectorAll('.settings-btn');
+    const infoBtn = document.querySelector('.info-btn');
+    const closeSettingBtn = document.querySelector('#close');
+    const settings = document.getElementById('settingsPage');
+    const intro = document.getElementById('introduction');
+    const toggles = document.querySelectorAll('.switch');
 
     // Plant Visual
     const plant = document.getElementById('plant');
@@ -54,7 +69,7 @@
             fertilizer: 0
         },
         day: 1,
-        gameEnd: 30
+        gameEnd: 14
     }
 
     window.addEventListener('load', function () { 
@@ -63,47 +78,127 @@
             range.width = optimalHealth[i][1] - optimalHealth[i][0];
         });
 
-        overlay.className = 'showing';
+        showOverlay(intro);
+        // overlay.className = 'showing';
 
         // Add event listeners
+        // Overlay Event listeners
         startGameBtns.forEach((btn) => {
             btn.addEventListener('click', function() {
-                console.log("click");
-                overlay.className = 'hidden';
-                startGame();
-    
-                overlay.addEventListener('animationend', () => {
-                    overlay.style.display = 'none';
-                })
-            })
+                // fadeOut(overlay);
+                hideOverlay();
+                // document.querySelector('main').className = 'showing';
+                if (btn.id == 'start') {
+                    startGame();
+                }
+                if (toggleValues.soundOn) {
+                    buttonSound.play();
+                }
+            });
         });
 
+        console.log(settingBtns);
+        settingBtns.forEach((btn) => {
+            btn.addEventListener('click', function() {
+                showOverlay(settings);
+                // document.querySelector('main').className = 'hidden';
+
+                // overlay.className = 'showing';
+                // intro.className = 'hidden';
+
+                // settings.className = 'showing';
+                if (toggleValues.soundOn) {
+                    buttonSound.play();
+                }
+            });
+        });
+
+        closeSettingBtn.addEventListener('click', function() {
+            if (gameStarted) {
+                hideOverlay();
+                // document.querySelector('main').className = 'showing';
+
+                // fadeOut(overlay);
+            }
+            intro.className = 'showing';
+            fadeOut(settings);
+           
+            console.log(toggleValues);
+            if (toggleValues.soundOn) {
+                buttonSound.play();
+            }
+        });
+
+        // .switch 
+        toggles.forEach( (toggle) => {
+            let checkbox = document.querySelector(`#${toggle.id} input`);
+            checkbox.addEventListener('change', () => {
+                toggleValues[toggle.id] = !checkbox.checked;
+
+                if (toggleValues.soundOn) {
+                    buttonSound.play();
+                }
+            });
+        });
+
+        infoBtn.addEventListener('click', function() {
+            let startGame = document.getElementById('start');
+            if (gameStarted && startGame) {
+                startGame.textContent = 'Continue Game';
+                startGame.id = 'continue';
+            }
+            showOverlay(intro);
+            // overlay.className = 'showing';
+            // intro.className = 'showing';
+            if (toggleValues.soundOn) {
+                buttonSound.play();
+            }
+        });
+
+        // Game event listeners
         startDayBtn.addEventListener('click', function() {
+            if (gameData.day == gameData.gameEnd) {
+                startDayBtn.textContent = 'Return Plant';
+            } else {
+                startDayBtn.textContent = 'Start Day';
+
+            }
+
             startDayBtn.className = 'hidden';
-            // startDayBtn.style.display = 'none';
             passBtn.className = 'showing';
             rollBtn.className = 'showing';
 
-            buttonSound.play();
+            if (toggleValues.soundOn) {
+                buttonSound.play();
+            }
             setUpDay();
         });
 
         rollBtn.addEventListener('click', function() {
-            console.log("ROLL")
+            for (let r in gameData.health) {
+                document.querySelector(`#${r}-stat span`).textContent = gameData.health[r];
+            }
+
             throwDice(); 
+
+
             startDayBtn.className = 'showing';
             // startDayBtn.style.display = 'none';
 
             passBtn.className = 'hidden';
             rollBtn.className = 'hidden';
-            buttonSound.play();
+            if (toggleValues.soundOn) {
+                buttonSound.play();
+            }
         });
 
         passBtn.addEventListener('click', function() {
             startDayBtn.className = 'showing';
             passBtn.className = 'hidden';
             rollBtn.className = 'hidden';
-            buttonSound.play();
+            if (toggleValues.soundOn) {
+                buttonSound.play();
+            }
         });
 
         plant.addEventListener('mouseover', (event) => {
@@ -125,16 +220,22 @@
         // Reset the day to 1
         gameData.day = 1;
 
-        updateHealth();
+        updateHealth();   
+        dateCardsFront.forEach ((card, i) => {
+            flipDate(card, dateCardsBack[i]);
+        });     
+
         gameStarted = true;
 
-        // setUpDay();
+
     }
 
     function flipDate(front, back) {
-        console.log("Flip date: ", front, back);
+        // console.log("Flip date: ", front, back);
         front.style.animation = 'flipDown 0.5s linear forwards';
-
+        if (toggleValues.soundOn) {
+            flipPage.play();
+        }
         front.addEventListener('animationend', (e) => {
             front.textContent = back.textContent;
             front.style.animation = '';
@@ -142,7 +243,7 @@
     }
 
     function clearResource(front, back) {
-        console.log("Flip resource: ", front, back);
+        // console.log("Flip resource: ", front, back);
        
         front.style.animation = '0.5s flipUp 0.5s linear forwards'
 
@@ -187,11 +288,10 @@
             }
         }
         updateHealth();
-        gameData.day++;
 
         // Check if game has ended
         // Plant survived the 30 days
-        if (gameData.day > 30) {
+        if (gameData.day > gameData.gameEnd) {
             document.getElementById('end-survive').className = 'showing';
             endGame();
         }
@@ -200,6 +300,8 @@
             document.getElementById('end-dead').className = 'showing';
             endGame();
         }
+        gameData.day++;
+
     }
 
     function throwDice() {
@@ -215,11 +317,12 @@
         let resourceAmount = gameData.currentResources.map((r) => {
             return gameData.resources[r][1];
         })
+        console.log("Health", gameData.health);
+        console.log(resourceType, resourceAmount);
 
 
         for (let i = 0; i < 2; i++ ){
-            document.querySelector(`#${resourceType[i]}-stat span`).textContent = gameData.health[resourceType[i]];
-
+            console.log(resourceType[i], resourceAmount[i])
             // Update Plant health with corresponding resource type and amount
             gameData.health[resourceType[i]] += resourceAmount[i];
 
@@ -259,6 +362,8 @@
         updateHealthColor(healthVal);
 
         let width = window.innerWidth * 0.25;
+        // console.log("BAR WIDTH: ", document.getElementById('health-overlay').style);
+        // console.log(window.innerWidth);
 
         // Health bar styling 
         if (healthVal * width < 50) {
@@ -314,7 +419,7 @@
 
         const plant = document.querySelector('#plant-visual img');
 
-        if (!plant.src.includes(`plant${index}.png`)) {
+        if (!plant.src.includes(`plant${index}.png`) && toggleValues.soundOn) {
             plantSound.play();
         }
 
@@ -337,6 +442,27 @@
         let min = Math.ceil(range[0]);
         let max = Math.floor(range[1]);
         return Math.floor(Math.random() * (max - min) + min); 
+    }
+
+    function fadeOut(element) {
+        console.log("fade out: ", element);
+        element.className = 'hidden';
+        element.addEventListener('animationend', () => {
+            // element.style.display = 'none';
+        })
+    }
+
+    function showOverlay(page) {
+        document.querySelector('main').className = 'hidden';
+        page.className = 'showing';
+        overlay.className = 'showing';
+    }
+
+    function hideOverlay() {
+        document.querySelector('main').className = 'showing';
+        
+        overlay.className = 'hidden';
+
     }
 
     window.addEventListener('resize', function () {

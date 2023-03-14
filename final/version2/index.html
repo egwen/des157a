@@ -25,10 +25,73 @@
         <h2>Can you keep the plant alive?</h2>
     </header>
     <section class="hidden" id="overlay">
-        <article id="welcome" class="showing">
+
+        <article id="introduction" class="showing">
+            <button class="settings-btn">
+                <img src="images/settings-btn-dark.png">
+            </button>
             <h1>Congrats! It's a plant!</h1>
-            <p>Welcome to the wonderful world of parenthood! Your best friend has entrusted you to take care of their plant while they are out of town. You have to watch it for 30 days and try to keep it alive and healthy. Each day, you can either give the plant an assortment of random resources or nothing. Don't worry, you're just taking care of their emotional support plant and their favorite thing in the whole entire world. Good luck and no pressure!</p>
-            <button class="start-game">Start Game!</button>
+            <p>Welcome to the wonderful world of parenthood! Your best friend has entrusted you to take care of their emotional-support plant while they are out of town. You must watch over it for 14 days, keeping it alive and healthy. </p>
+            <p>Each day, the plant might lose a bit of its health so you must choose to either feed the plant or let the plant rest. Be careful! Too little or too much of a resource will hurt the plant.</p>
+            <p>Don't worry, you're only responsible for their favorite thing in the whole entire world. Good luck and no pressure!</p>
+            <button class="start-game" id="start">Start Game!</button>
+
+        </article>
+
+        <article id="settingsPage" class="hidden">
+            <button class="settings-btn" id="close">
+                <img src="images/x-btn.png">
+            </button>
+            <h1>Settings</h1>
+            <div class="player-setting">
+                <h2>Players</h2>
+                <div class="setting">
+                    <span class="on">Single</span>
+                    <label class="switch" id="singlePlayer">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+
+                    </label>
+                    <span class="off">Multiplayer</span>
+
+                </div>
+                
+            </div>
+            <!-- <div class="mode-setting">
+                <h2>Mode</h2>
+                <div class="setting">
+                    <span>Single</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <span>Multiplayer</span>
+                </div>
+            </div> -->
+            <div class="sound-setting">
+                <h2>Sound</h2>
+                <div class="setting">
+                    <span class="on">On</span>
+                    <label class="switch" id="soundOn">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="off">Off</span>
+                </div>
+            </div>
+            <div class="animation-setting">
+                <h2>Animation</h2>
+                <div class="setting">
+                    <span class="on">On</span>
+                    <label class="switch" id="animationOn">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="off">Off</span>
+                </div>
+            </div>
+            
+
         </article>
 
         <article id="end-survive" class="hidden">
@@ -41,16 +104,14 @@
             <h1>Uh Oh...</h1>
             <p>Maybe go run to the store and get a new emotional support plant before your friend gets back in town...</p>
             <button class="start-game">Start a New Game!</button>
-
         </article>
     </section>
-    <main>
+    <main class="hidden">
         <section id="plant">
             <div id="plant-visual">
                 <img src="images/plant1.png" alt="plant">
             </div>
             <div id="plant-health">
-                <!-- <span id="health-stats"></span> -->
                 <div id="health-bar">
                     <div id="bar-fill"></div>
                     <div id="bar-outline" class="outline">OK</div>
@@ -59,24 +120,14 @@
                     <div id="water-stat">
                         <img src="images/water1.png" alt="water">
                         <span>0</span>
-                        <!-- <div id="water-fill" class="fill"></div>
-                        <div id="water-outline" class="outline"></div>
-                        <div id="water-dot" class="dot"></div> -->
                     </div>
                     <div id="sun-stat">
                         <img src="images/sun1.png" alt="sun"> 
                         <span>0</span>
-
-                        <!-- <div id="sun-fill" class="fill"></div>
-                        <div id="sun-outline" class="outline"></div>
-                        <div id="sun-dot" class="dot"></div> -->
                     </div>
                     <div id="fertilizer-stat">
                         <img src="images/fertilizer1.png" alt="fertilizer">
                         <span>0</span>
-                        <!-- <div id="fertilizer-fill" class="fill"></div>
-                        <div id="fertilizer-outline" class="outline"></div>
-                        <div id="fertilizer-dot" class="dot"></div> -->
                     </div>
                 </div>
             </div>
@@ -112,12 +163,46 @@
                 </div>
             </div>
             <div id="action-area">
-                <button id="start-btn">Start Day!</button>
+                <button id="start-btn">Start Day</button>
                 <button id="pass" class="hidden">Rest</button>
                 <button id="roll" class="hidden">Feed Plant</button>
             </div>
         </section>
+        <!-- <section id="plant">
+            <div id="plant-visual">
+                <img src="images/plant1.png" alt="plant">
+            </div>
+            <div id="plant-health">
+                <div id="health-bar">
+                    <div id="bar-fill"></div>
+                    <div id="bar-outline" class="outline">OK</div>
+                </div>
+                <div id="health-overlay" class="hidden">
+                    <div id="water-stat">
+                        <img src="images/water1.png" alt="water">
+                        <span>0</span>
+                    </div>
+                    <div id="sun-stat">
+                        <img src="images/sun1.png" alt="sun"> 
+                        <span>0</span>
+                    </div>
+                    <div id="fertilizer-stat">
+                        <img src="images/fertilizer1.png" alt="fertilizer">
+                        <span>0</span>
+                    </div>
+                </div>
+            </div>
+        </section> -->
     </main>
-    <footer><a href="sources.html">Sources</a></footer>
+    <button class="info-btn">
+        <img src="images/info-btn-light.png">
+    </button>
+    <button class="settings-btn">
+        <img src="images/settings-btn-light.png">
+    </button>
+    <footer>
+        <a href="sources.html">Sources</a>
+        
+    </footer>
 </body>
 </html>
