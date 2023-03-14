@@ -210,11 +210,12 @@
         }
         // Reset the day to 1
         gameData.day = 1;
-
-        updateHealth();   
         dateCardsFront.forEach ((card, i) => {
             flipDate(card, dateCardsBack[i]);
-        });     
+        });   
+
+        updateHealth();   
+          
 
         gameStarted = true;
 
@@ -283,12 +284,15 @@
         // Check if game has ended
         // Plant survived the 30 days
         if (gameData.day > gameData.gameEnd) {
-            document.getElementById('end-survive').className = 'showing';
+            showOverlay(document.getElementById('end-survive'));
+            // document.getElementById('end-survive').className = 'showing';
             endGame();
         }
         // Plant died before the 30 days
         if (calculateHealthVal() == 0) {
-            document.getElementById('end-dead').className = 'showing';
+            showOverlay(document.getElementById('end-dead'));
+
+            // document.getElementById('end-dead').className = 'showing';
             endGame();
         }
         gameData.day++;
