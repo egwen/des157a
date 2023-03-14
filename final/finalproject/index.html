@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plant Parenthood</title>
+
+    <!-- Normalize -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?&family=Baskervville&display=swap" rel="stylesheet">
+
+    <!-- Styling -->
+    <link href="style.css" rel="stylesheet">
+
+    <!-- Script -->
+    <script src="./script.js" defer></script>
+
+</head>
+<body>
+    <section id="user-testing">
+        <article class="user-show">
+            <h1>User Testing</h1>
+            <p>Hi, thanks for testing out my game! Please complete these steps.</p>
+            <ol>
+                <li>Start the game and state how much water the plant has at the beginning of Day 1</li>
+                <li>Feed the plant and state how much the plant's water has changed.</li>
+                <li>Play the game until Day 7. Turn off the sound effects and return to the game</li>
+                <li>Complete the game and start a new game.</li>
+            </ol>
+            <button id="user-testing-btn"><span>Close</span><span>User Testing Instructions <img src="images/arrow.png"></span></button>
+            
+        </article>
+    </section>
+
+    <header>
+        <h1>Plant Parenthood</h1>
+        <h2>Can you keep the plant alive?</h2>
+    </header>
+    <section class="hidden" id="overlay">
+        <article id="introduction" class="showing">
+            <button class="settings-btn">
+                <img src="images/settings-btn-dark.png">
+            </button>
+            <h1>Congrats! It's a plant!</h1>
+            <p>Welcome to the wonderful world of parenthood! Your best friend has entrusted you to take care of their emotional-support plant while they are out of town. You must watch over it for 14 days, keeping it alive and healthy. </p>
+            <p>Each day, the plant might lose a bit of its health so you must choose to either feed the plant or let the plant rest. Be careful! Too little or too much of a resource will hurt the plant.</p>
+            <p>Don't worry, you're only responsible for their favorite thing in the whole entire world. Good luck and no pressure!</p>
+            <button class="start-game" id="start">Start Game!</button>
+
+        </article>
+
+        <article id="settingsPage" class="hidden">
+            <button class="settings-btn" id="close">
+                <img src="images/x-btn.png">
+            </button>
+            <h1>Settings</h1>
+            <div class="player-setting">
+                <h2>Players</h2>
+                <div class="setting">
+                    <span class="on">Single</span>
+                    <label class="switch" id="singlePlayer">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+
+                    </label>
+                    <span class="off">Multiplayer</span>
+
+                </div>
+                
+            </div>
+            <!-- <div class="mode-setting">
+                <h2>Mode</h2>
+                <div class="setting">
+                    <span>Single</span>
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <span>Multiplayer</span>
+                </div>
+            </div> -->
+            <div class="sound-setting">
+                <h2>Sound</h2>
+                <div class="setting">
+                    <span class="on">On</span>
+                    <label class="switch" id="soundOn">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="off">Off</span>
+                </div>
+            </div>
+            <div class="animation-setting">
+                <h2>Animation</h2>
+                <div class="setting">
+                    <span class="on">On</span>
+                    <label class="switch" id="animationOn">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+                    <span class="off">Off</span>
+                </div>
+            </div>
+            
+
+        </article>
+
+        <article id="end-survive" class="hidden">
+            <h1>Congrats! Your plant survived!</h1>
+            <p>Wow you are such a good friend! Your friend trusts you to take care of their plant. Maybe one day you will have a plant of your own.</p>
+            <button class="start-game" id="start">Start a New Game!</button>
+        </article>
+
+        <article id="end-dead" class="hidden">
+            <h1>Uh Oh...</h1>
+            <p>Maybe go run to the store and get a new emotional support plant before your friend gets back in town...</p>
+            <button class="start-game" id="start">Start a New Game!</button>
+        </article>
+    </section>
+    <main class="hidden">
+        <section id="plant">
+            <div id="plant-visual">
+                <img src="images/plant1.png" alt="plant">
+            </div>
+            <div id="plant-health">
+                <div id="health-bar">
+                    <div id="bar-fill"></div>
+                    <div id="bar-outline" class="outline">OK</div>
+                </div>
+                <div id="health-overlay" class="hidden">
+                    <div id="water-stat">
+                        <img src="images/water1.png" alt="water">
+                        <span>0</span>
+                    </div>
+                    <div id="sun-stat">
+                        <img src="images/sun1.png" alt="sun"> 
+                        <span>0</span>
+                    </div>
+                    <div id="fertilizer-stat">
+                        <img src="images/fertilizer1.png" alt="fertilizer">
+                        <span>0</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="game">
+            <div id="day">Day</div>
+            <div id="date">
+                <div id="date1" class="card">
+                    <div class="front"></div>
+                    <div class="back"></div>
+                </div>
+                <div id="date2" class="card">
+                    <div class="front"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
+            <div id="loops">
+                <svg width="199" height="18" viewBox="0 0 199 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="124" width="11" height="18" rx="3" fill="#402C23"/>
+                    <rect x="188" width="11" height="18" rx="3" fill="#402C23"/>
+                    <rect width="11" height="18" rx="3" fill="#402C23"/>
+                    <rect x="64" width="11" height="18" rx="3" fill="#402C23"/>
+                </svg>
+            </div>
+            <div id="resources">
+                <div id="resource1" class="card">
+                    <div class="front"></div>
+                    <div class="back"></div>
+                </div>
+                <div id="resource2" class="card">
+                    <div class="front"></div>
+                    <div class="back"></div>
+                </div>
+            </div>
+            <div id="action-area">
+                <button id="start-btn">Start Day</button>
+                <button id="pass" class="hidden">Rest</button>
+                <button id="roll" class="hidden">Feed Plant</button>
+            </div>
+        </section>
+        <!-- <section id="plant">
+            <div id="plant-visual">
+                <img src="images/plant1.png" alt="plant">
+            </div>
+            <div id="plant-health">
+                <div id="health-bar">
+                    <div id="bar-fill"></div>
+                    <div id="bar-outline" class="outline">OK</div>
+                </div>
+                <div id="health-overlay" class="hidden">
+                    <div id="water-stat">
+                        <img src="images/water1.png" alt="water">
+                        <span>0</span>
+                    </div>
+                    <div id="sun-stat">
+                        <img src="images/sun1.png" alt="sun"> 
+                        <span>0</span>
+                    </div>
+                    <div id="fertilizer-stat">
+                        <img src="images/fertilizer1.png" alt="fertilizer">
+                        <span>0</span>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+    </main>
+    <button class="info-btn">
+        <img src="images/info-btn-light.png">
+    </button>
+    <button class="settings-btn">
+        <img src="images/settings-btn-light.png">
+    </button>
+    <footer>
+        <a href="sources.html">Sources</a>
+        
+    </footer>
+</body>
+</html>

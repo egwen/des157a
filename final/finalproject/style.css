@@ -1,0 +1,689 @@
+* {
+    box-sizing: border-box;
+}
+
+h1, h2, p, ol, li{
+    margin: 0;
+}
+
+body {
+    background-color: #2E5331;
+    font-family: "Baskerville";
+    color: black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    max-height: 750px;
+    overflow: hidden;
+}
+
+header, main {
+    display: flex;
+    width: 65vw;
+    max-width: 850px;
+}
+
+header, footer a {
+    flex-direction: column;
+    color: #F2EEE9;
+    margin: 3%;
+}
+
+main {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+footer {
+    width: 100vw;
+    position: absolute;
+    bottom: 10px;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+footer a{
+    text-decoration: none;
+    
+}
+
+h1, h2 {
+    font-weight: normal;
+}
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 0.2em;
+}
+h2 {
+    font-size: 2em;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.3em;
+    margin: 0.25em 0em;
+}
+
+main section {
+    min-width: 25vw;
+    height: 70vh;
+    max-height: 500px;
+    background-color: #F2EEE9;
+    display: flex;
+}
+
+/* Overlay styling */
+#overlay {
+    position: absolute;
+    background-color: rgba(0,0,0,0.5);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: all 1s ease;
+}
+
+#overlay article {
+    background-color: #F2EEE9;
+    padding: 50px 75px 25px;
+    width: 50vw;
+    min-width: 600px;
+    max-width: 700px;
+    height: 80vh;
+    max-height: 600px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 50px;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+}
+
+#overlay p {
+    font-size: 1.3em;
+    line-height: 1.5em;
+    max-width: 500px;
+}
+
+#overlay .start-game {
+    width: 250px;
+    align-self: center;
+    margin-top: auto;
+}
+
+/* Settings styling */
+button:has(img), .settings-btn, .info-btn{
+    background-color: #00000000;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+}
+.settings-btn {
+    right: 30px;
+    top: 30px;
+}
+
+.info-btn {
+    right: 95px;
+    top: 30px;
+}
+
+button img {
+    width: 40px;
+}
+
+#close img {
+    width: 30px;
+}
+
+#settingsPage>div{
+    display: flex;
+    gap: 50px;
+    /* justify-content: ; */
+    align-items: center;
+    margin-top: 30px;
+}
+
+#settingsPage h2 {
+    width: 200px;
+}
+
+.setting {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    position: relative;
+}
+
+.setting>span {
+    width: 0;
+    pointer-events: none;
+    font-size: 1.2em;
+}
+
+.setting>span:first-of-type {
+    position: absolute;
+    left: 0;
+}
+.setting>span:last-of-type {
+    position: absolute;
+    padding-left: 100px;
+}
+
+.player-setting .slider {
+    background-image: url(images/player-toggle.png);
+}
+
+.sound-setting .slider {
+    background-image: url(images/sound-toggle.png);
+}
+
+.animation-setting .slider {
+    background-image: url(images/animation-toggle.png);
+}
+
+/* Plant styling */
+#plant {
+    width: 35vw;
+    min-width: 415px;
+    max-width: 515px;
+    color: black;
+    border-radius: 50% 50% 20% 20%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#plant-visual img {
+    height: 50vh;
+    max-height: 375px;
+}
+
+#plant-health {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#health-bar {
+    border-radius: 50px;    
+    width: 25vw;
+    max-width: 350px;
+    height: 30px;
+}
+
+#plant:hover #health-overlay {
+    transform: translateY(-100%);
+}
+
+#health-overlay.showing {
+    transform: translateY(-100%);
+}
+
+#health-bar div {
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    max-width: 350px;
+    border-radius: 50px; 
+    transition: all 1s ease;   
+}
+
+#health-overlay {
+    position: absolute;
+    background-color: #ffffff;
+    border-radius: 10px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    transition: all 1s ease;
+    padding: 1em;
+}
+
+#health-overlay div {
+    height: 30px;
+}
+
+#health-overlay img {
+    height: 50px;
+}
+
+#health-overlay span {
+    text-align: center;
+    font-weight:bold;
+    font-size: 1.2em;
+}
+
+#health-overlay > div {
+    margin: 1em;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.outline {
+    border-radius: 50px;    
+    border: solid black 1px;
+    position: absolute;
+}
+
+.fill {
+    transition: all 3s ease;
+    background-color: blue;
+    position: absolute;
+}
+
+#bar-outline {
+    border-radius: 50px;    
+    border: solid black 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+}
+
+div#bar-fill {
+    background-color: #F2EEE9;
+    width: calc(20vw * 0.95);
+    transition: all 1s ease;
+}
+
+#game {
+    width: 20vw;
+    background-color: #2E5331;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#game div {
+    display: flex;
+}
+
+.card, .card div {
+    width: 115px;
+    height: 144px;
+    border: solid 1px black;
+    margin: 1px;
+    border-radius: 5px;
+    color: black;
+}
+
+.card {
+    position: relative;
+}
+
+.card div {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.front {
+    background-color: #F2EEE9;
+    z-index: 1;
+}
+
+#date .front {
+    transform-origin: bottom;
+    background-color: #E0D7CC;
+}
+
+#resources .card div {
+    transform-origin: top;
+}
+
+#resources .front {
+    transform: rotateX(90deg);
+}
+
+#day {
+    width: 270px;
+    height: 60px;
+    background-color: #563526;
+    color: #F2EEE9;
+    border: 1px black solid;
+    border-radius: 5px;
+    font-size: 2em;
+    padding: 1%;
+    align-items: center;
+    justify-content: center;
+}
+
+#resources {
+    transform: translateY(-18px);
+}
+
+#date .card {
+    background-color: #E0D7CC;
+    font-size: 88px;
+    align-items: center;
+    justify-content: center;
+}
+
+#loops {
+    z-index: 2;
+    transform: translateY(-9px);
+}
+
+/* Animations for button */
+@keyframes spin {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }    
+}
+
+/* Animations for calendar */
+@keyframes flipDown {
+    0% { 
+        z-index: 1;
+        transform: rotateX(0deg);
+    }
+    99% {
+        z-index: 4;
+    }
+    100% { 
+        transform: rotateX(90deg);
+        z-index: 1;
+    }
+}
+
+@keyframes flipUp {
+    0% { 
+        transform: rotateX(90deg);
+    }
+    100% { 
+        transform: rotateX(0deg);
+    }
+}
+
+/* Animations for plant stats */
+@keyframes increment{
+    0% {
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.2);
+        color: green;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes decrement{
+    0% {
+        transform: scale(1);
+    }
+    50% { 
+        transform: scale(1.2);
+        color: red;
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#resources .card {
+    background-color: #F2EEE9;
+    align-items: center;
+    justify-content: center;
+}
+
+#resources img {
+    width: 65px;
+    object-fit: contain;
+}
+
+#action-area {
+    width: 100%;
+    justify-content: center;
+}
+
+button {
+    padding: 15px 25px;
+    margin: 15px 5px;
+    border-radius: 50px;
+    border: 1px solid black;
+    font-size: 1.4em;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+#start-btn {
+    position: absolute;
+}
+
+#start-btn.hidden {
+    transition: all 0.5s ease;
+}
+#start-btn.showing {
+    transition: all 0.75s ease;
+}
+
+#action-area button:not(:first-child) {
+    transition: transform 0.5s ease, opacity .3s ease, visibility 0.3s ease;
+}
+
+#pass.hidden {
+    transform: translateX(50%); 
+}
+#roll.hidden {
+    transform: translateX(-50%); 
+}
+#pass.showing {
+    transform: translateX(0%); 
+}
+#roll.showing {
+    transform: translateX(0%); 
+}
+
+#roll, #pass:hover {
+    background-color: #F2EEE9;
+    color:black;
+}
+
+#pass, #roll:hover {
+    background: transparent;
+    color:#F2EEE9;
+    border-color: #F2EEE9
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    z-index: 0;
+}
+
+.showing {
+    visibility: visible;
+    opacity: 1;
+    z-index: 2;
+}
+
+/* Styling for Settings Overlay */
+/* Toggle button from W3Schools */
+/* The switch - the box around the slider */
+.switch {
+    position: relative;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    transition: .4s;
+    border: black 2px solid;
+    background: no-repeat center/40px;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 2.1px;
+    bottom: 2.15px;
+    background-color: black;
+    transition: .4s;
+  }
+  
+  input:checked + .slider:before {
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider.round {
+    border-radius: 34px;
+  }
+  
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+
+/* Styling for User Testing */
+#user-testing {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.75);
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    transition: all 1s ease;
+    z-index: 5;
+}
+
+#user-testing h1 {
+    font-size: 1.8em;
+}
+
+#user-testing p, #user-testing ol {
+    font-size: 1.2em;
+}
+
+
+#user-testing:has(>article.user-show) {
+    background-color: rgba(0, 0, 0, 0.75);
+    height: 100vh;
+}
+
+#user-testing:has(>article.user-hide) {
+    background-color: rgba(0, 0, 0, 0);
+    height: 1vh;
+
+}
+
+#user-testing article {
+    background-color: #F2EEE9;
+    padding: 25px;
+    width: 50vw;
+    min-width: 500px;
+    max-width: 700px;
+    height: 50vh;
+    max-height: 600px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    border-radius: 0px 0px 20px 20px;
+    transform: translate(-50%, 0%);
+    display: flex;
+    flex-direction: column;
+    transition: transform 1s ease, width 1s ease;
+}
+
+.user-show button {
+    display: block;
+    border: solid black 1px;
+    border-radius: 25px;
+    padding: 5px 15px;
+}
+
+.user-show span:first-of-type, .user-hide span:last-of-type {
+    display: block;
+}
+.user-hide span:first-of-type, .user-show span:last-of-type{
+    display: none;
+}
+
+#user-testing article.user-hide {
+    transform: translate(-50%, -90%);
+    width: 30px;
+}
+
+#user-testing article.user-show {
+    transform: translate(-50%, 0%);
+    width: 50vw;
+}
+li {
+    padding: 0.2em;
+}
+.user-show ol {
+    display: block;
+}
+.user-hide ol {
+    display: none;
+}
+
+#user-testing-btn {
+    align-self: center;
+}
+
+.user-show #user-testing-btn {
+    bottom: 15px;
+}
+
+.user-hide #user-testing-btn {
+    bottom: 5px;
+}
+
+#user-testing-btn img{
+    width: 30px;
+}
+
+
+
+/* Styling for Sources page */
+.sources section {
+    flex-direction: column;
+    padding: 5%;
+    border-radius: 3%;
+    width: 100%;
+}
+
+.sources p {
+    padding-left: 10%;
+}
+
+.sources footer{
+    width: 30vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
