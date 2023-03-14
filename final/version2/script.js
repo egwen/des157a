@@ -11,7 +11,6 @@
         animationOn: true
     }
 
-
     // Sound effects
     const plantSound = new Audio('sounds/plant.wav');
     const buttonSound = new Audio('sounds/click.wav');
@@ -79,15 +78,12 @@
         });
 
         showOverlay(intro);
-        // overlay.className = 'showing';
 
         // Add event listeners
         // Overlay Event listeners
         startGameBtns.forEach((btn) => {
             btn.addEventListener('click', function() {
-                // fadeOut(overlay);
                 hideOverlay();
-                // document.querySelector('main').className = 'showing';
                 if (btn.id == 'start') {
                     startGame();
                 }
@@ -97,16 +93,9 @@
             });
         });
 
-        console.log(settingBtns);
         settingBtns.forEach((btn) => {
             btn.addEventListener('click', function() {
                 showOverlay(settings);
-                // document.querySelector('main').className = 'hidden';
-
-                // overlay.className = 'showing';
-                // intro.className = 'hidden';
-
-                // settings.className = 'showing';
                 if (toggleValues.soundOn) {
                     buttonSound.play();
                 }
@@ -116,9 +105,6 @@
         closeSettingBtn.addEventListener('click', function() {
             if (gameStarted) {
                 hideOverlay();
-                // document.querySelector('main').className = 'showing';
-
-                // fadeOut(overlay);
             }
             intro.className = 'showing';
             fadeOut(settings);
@@ -148,8 +134,6 @@
                 startGame.id = 'continue';
             }
             showOverlay(intro);
-            // overlay.className = 'showing';
-            // intro.className = 'showing';
             if (toggleValues.soundOn) {
                 buttonSound.play();
             }
@@ -161,7 +145,6 @@
                 startDayBtn.textContent = 'Return Plant';
             } else {
                 startDayBtn.textContent = 'Start Day';
-
             }
 
             startDayBtn.className = 'hidden';
@@ -178,12 +161,9 @@
             for (let r in gameData.health) {
                 document.querySelector(`#${r}-stat span`).textContent = gameData.health[r];
             }
-
             throwDice(); 
 
-
             startDayBtn.className = 'showing';
-            // startDayBtn.style.display = 'none';
 
             passBtn.className = 'hidden';
             rollBtn.className = 'hidden';
@@ -208,9 +188,20 @@
             healthOverlay.className = 'hidden';
         });
 
+
+        // Usability Testing Code:
+        let userBtn = document.getElementById('user-testing-btn');
+        let userOverlay = document.querySelector('#user-testing article');
+        userBtn.addEventListener('click', () => {
+            if (userOverlay.className == 'user-show') {
+                userOverlay.className = 'user-hide';
+            } else if (userOverlay.className == 'user-hide') {
+                userOverlay.className = 'user-show';
+            } 
+        });
+        
+        
     });
-
-
 
     function startGame() {
         // Set initial value of each resource randomly within optimal health
@@ -460,7 +451,7 @@
 
     function hideOverlay() {
         document.querySelector('main').className = 'showing';
-        
+
         overlay.className = 'hidden';
 
     }
