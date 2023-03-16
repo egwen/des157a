@@ -20,36 +20,31 @@
 
 </head>
 <body>
-    <section id="user-testing">
-        <article class="user-show">
-            <h1>User Testing</h1>
-            <p>Hi, thanks for testing out my game! Please complete these steps.</p>
-            <ol>
-                <li>Start the game and state how much water the plant has at the beginning of Day 1</li>
-                <li>Feed the plant and state how much the plant's water has changed.</li>
-                <li>Play the game until Day 7. Turn off the sound effects and return to the game</li>
-                <li>Complete the game and start a new game.</li>
-            </ol>
-            <button id="user-testing-btn"><span>Close</span><span>User Testing Instructions <img src="images/arrow.png"></span></button>
-            
-        </article>
-    </section>
-
     <header>
         <h1>Plant Parenthood</h1>
         <h2>Can you keep the plant alive?</h2>
     </header>
     <section class="hidden" id="overlay">
         <article id="introduction" class="showing">
+            <h1>Welcome to the wonderful world of parenthood!</h1>
+            <p>
+                Your best friend is going out of town and they have entrusted you to take care of their emotional-support plant. The plant is in perfect health, and your goal is to keep their plant alive and as healthy as possible when they return. 
+            </p>
+            <p>
+                Don't worry, you're only responsible for their favorite thing in the whole entire world. Good luck and no pressure!
+            </p>
+            <button id="instruction-btn">Plant Care 101</button>
+        </article>
+
+        <article id="instructions" class="hidden">
             <button class="settings-btn">
                 <img src="images/settings-btn-dark.png">
             </button>
-            <h1>Congrats! It's a plant!</h1>
-            <p>Welcome to the wonderful world of parenthood! Your best friend has entrusted you to take care of their emotional-support plant while they are out of town. You must watch over it for 14 days, keeping it alive and healthy. </p>
-            <p>Each day, the plant might lose a bit of its health so you must choose to either feed the plant or let the plant rest. Be careful! Too little or too much of a resource will hurt the plant.</p>
-            <p>Don't worry, you're only responsible for their favorite thing in the whole entire world. Good luck and no pressure!</p>
+            <h1>Plant Care 101</h1>
+            <p>At the start of the game, the plant is perfectly healthy with the perfect amount of water <img src="images/water1.png">, sun <img src="images/sun1.png">, and nutrients <img src="images/fertilizer1.png">.</p>
+            <p>Each day, the plant might lose a bit of each resource and you must decide whether to FEED the plant random resources or let the plant REST by giving it nothing.</p>
+            <p>Be careful! Too little or too much of a resource will hurt the plant.</p>
             <button class="start-game" id="start">Start Game!</button>
-
         </article>
 
         <article id="settingsPage" class="hidden">
@@ -109,7 +104,7 @@
         </article>
 
         <article id="end-survive" class="hidden">
-            <h1>Congrats! Your plant survived!</h1>
+            <h1>Congrats! The plant survived!</h1>
             <p>Wow you are such a good friend! Your friend trusts you to take care of their plant. Maybe one day you will have a plant of your own.</p>
             <button class="start-game" id="start">Start a New Game!</button>
         </article>
@@ -177,36 +172,11 @@
                 </div>
             </div>
             <div id="action-area">
-                <button id="start-btn">Start Day</button>
-                <button id="pass" class="hidden">Rest</button>
-                <button id="roll" class="hidden">Feed Plant</button>
+                <button id="start-btn" class="hidden">Start Next Day</button>
+                <button id="pass">Rest</button>
+                <button id="roll">Feed Plant</button>
             </div>
         </section>
-        <!-- <section id="plant">
-            <div id="plant-visual">
-                <img src="images/plant1.png" alt="plant">
-            </div>
-            <div id="plant-health">
-                <div id="health-bar">
-                    <div id="bar-fill"></div>
-                    <div id="bar-outline" class="outline">OK</div>
-                </div>
-                <div id="health-overlay" class="hidden">
-                    <div id="water-stat">
-                        <img src="images/water1.png" alt="water">
-                        <span>0</span>
-                    </div>
-                    <div id="sun-stat">
-                        <img src="images/sun1.png" alt="sun"> 
-                        <span>0</span>
-                    </div>
-                    <div id="fertilizer-stat">
-                        <img src="images/fertilizer1.png" alt="fertilizer">
-                        <span>0</span>
-                    </div>
-                </div>
-            </div>
-        </section> -->
     </main>
     <button class="info-btn">
         <img src="images/info-btn-light.png">

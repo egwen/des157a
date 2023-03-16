@@ -54,11 +54,12 @@ h1, h2 {
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 2.5em;
     margin-bottom: 0.2em;
 }
+
 h2 {
-    font-size: 2em;
+    font-size: 1.8em;
 }
 
 p {
@@ -109,10 +110,19 @@ main section {
     max-width: 500px;
 }
 
-#overlay .start-game {
+#overlay button:not(button:has(img)) {
     width: 250px;
     align-self: center;
     margin-top: auto;
+}
+
+p img {
+    width: 20px;
+    vertical-align: text-top;
+}
+
+p img:first-of-type {
+    width: 15px;
 }
 
 /* Settings styling */
@@ -125,6 +135,7 @@ button:has(img), .settings-btn, .info-btn{
     display: flex;
     justify-content: center;
 }
+
 .settings-btn {
     right: 30px;
     top: 30px;
@@ -378,12 +389,6 @@ div#bar-fill {
     transform: translateY(-9px);
 }
 
-/* Animations for button */
-@keyframes spin {
-    0% { transform: rotate(0deg) }
-    100% { transform: rotate(360deg) }    
-}
-
 /* Animations for calendar */
 @keyframes flipDown {
     0% { 
@@ -456,6 +461,7 @@ button {
     margin: 15px 5px;
     border-radius: 50px;
     border: 1px solid black;
+    background-color: #F2EEE9;
     font-size: 1.4em;
 }
 
@@ -566,108 +572,6 @@ button:hover {
   .slider.round:before {
     border-radius: 50%;
   }
-
-
-/* Styling for User Testing */
-#user-testing {
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.75);
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    transition: all 1s ease;
-    z-index: 5;
-}
-
-#user-testing h1 {
-    font-size: 1.8em;
-}
-
-#user-testing p, #user-testing ol {
-    font-size: 1.2em;
-}
-
-
-#user-testing:has(>article.user-show) {
-    background-color: rgba(0, 0, 0, 0.75);
-    height: 100vh;
-}
-
-#user-testing:has(>article.user-hide) {
-    background-color: rgba(0, 0, 0, 0);
-    height: 1vh;
-
-}
-
-#user-testing article {
-    background-color: #F2EEE9;
-    padding: 25px;
-    width: 50vw;
-    min-width: 500px;
-    max-width: 700px;
-    height: 50vh;
-    max-height: 600px;
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    border-radius: 0px 0px 20px 20px;
-    transform: translate(-50%, 0%);
-    display: flex;
-    flex-direction: column;
-    transition: transform 1s ease, width 1s ease;
-}
-
-.user-show button {
-    display: block;
-    border: solid black 1px;
-    border-radius: 25px;
-    padding: 5px 15px;
-}
-
-.user-show span:first-of-type, .user-hide span:last-of-type {
-    display: block;
-}
-.user-hide span:first-of-type, .user-show span:last-of-type{
-    display: none;
-}
-
-#user-testing article.user-hide {
-    transform: translate(-50%, -90%);
-    width: 30px;
-}
-
-#user-testing article.user-show {
-    transform: translate(-50%, 0%);
-    width: 50vw;
-}
-li {
-    padding: 0.2em;
-}
-.user-show ol {
-    display: block;
-}
-.user-hide ol {
-    display: none;
-}
-
-#user-testing-btn {
-    align-self: center;
-}
-
-.user-show #user-testing-btn {
-    bottom: 15px;
-}
-
-.user-hide #user-testing-btn {
-    bottom: 5px;
-}
-
-#user-testing-btn img{
-    width: 30px;
-}
-
-
 
 /* Styling for Sources page */
 .sources section {
