@@ -90,9 +90,7 @@ main section {
 #overlay article {
     background-color: #F2EEE9;
     padding: 50px 75px 25px;
-    width: 50vw;
-    min-width: 600px;
-    max-width: 700px;
+    width: 700px;
     height: 80vh;
     max-height: 600px;
     position: absolute;
@@ -105,13 +103,27 @@ main section {
 }
 
 #overlay p {
-    font-size: 1.3em;
+    font-size: 1.5em;
     line-height: 1.5em;
-    max-width: 500px;
+    max-width: 550px;
 }
 
-#overlay button:not(button:has(img)) {
+.start-game,
+.continue-game,
+.restart-game,
+.instruction-btn,
+.select-plant {
     width: 250px;
+    align-self: center;
+    margin-top: auto;
+}
+
+#settings-page-btns .restart-game {
+    border-width: 3px;
+    font-weight: bold;
+}
+
+#settings-page-btns {
     align-self: center;
     margin-top: auto;
 }
@@ -126,7 +138,11 @@ p img:first-of-type {
 }
 
 /* Settings styling */
-button:has(img), .settings-btn, .info-btn{
+.back-btn,
+.close-btn,
+.arrow-btn,
+.settings-btn,
+.info-btn {
     background-color: #00000000;
     border: none;
     padding: 0;
@@ -136,9 +152,22 @@ button:has(img), .settings-btn, .info-btn{
     justify-content: center;
 }
 
-.settings-btn {
+.settings-btn, .close-btn {
     right: 30px;
     top: 30px;
+}
+
+article:not(#settingsPage) .close-btn {
+    display: none;
+}
+
+.back-btn {
+    left: 30px;
+    top: 30px;
+}
+
+.arrow-btn img, .back-btn img{
+    width: 20px;
 }
 
 .info-btn {
@@ -150,17 +179,67 @@ button img {
     width: 40px;
 }
 
-#close img {
+.close-btn img {
     width: 30px;
 }
+
+.slideshow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    height: inherit;
+    width: 300px;
+    align-self: center;
+    margin-right: 30px;
+}
+
+#plant-select{
+    position: relative;
+    width: 200px;
+    height: 300px;
+    margin: 0px 20px;
+    padding: 20px 35px 0px;
+    border: 1px solid black;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+#plant-select img {
+    position: absolute;
+    width: 130px;
+}
+
+#prev, #next {
+    position: relative;
+}
+
+#next {
+    transform: rotate(180deg);
+}
+
+.plant-content {
+    margin: 30px 0px;
+    display: flex;
+    flex-direction: row;
+}
+
+.plant-stats {
+    width: 250px;
+    margin-top: 10px;
+}
+
 
 #settingsPage>div{
     display: flex;
     gap: 50px;
-    /* justify-content: ; */
     align-items: center;
+}
+
+#settingsPage>div:not(:last-of-type) {
     margin-top: 30px;
 }
+
 
 #settingsPage h2 {
     width: 200px;
@@ -213,7 +292,7 @@ button img {
     flex-direction: column;
 }
 
-#plant-visual img {
+#plant-visual {
     height: 50vh;
     max-height: 375px;
 }
@@ -232,12 +311,8 @@ button img {
     height: 30px;
 }
 
-#plant:hover #health-overlay {
-    transform: translateY(-100%);
-}
-
 #health-overlay.showing {
-    transform: translateY(-100%);
+    transform: translateY(-70%);
 }
 
 #health-bar div {
@@ -257,28 +332,40 @@ button img {
     align-content: center;
     justify-content: center;
     transition: all 1s ease;
-    padding: 1em;
-}
-
-#health-overlay div {
-    height: 30px;
+    padding: 0px 10px ;
 }
 
 #health-overlay img {
     height: 50px;
+    width: fit-content;
+    align-self: center;
+    margin: 5px;
 }
 
 #health-overlay span {
     text-align: center;
-    font-weight:bold;
+    font-weight: bold;
     font-size: 1.2em;
 }
 
+.hint {
+    opacity: 0%;
+}
+
+.stat {
+    cursor: pointer;
+}
+
 #health-overlay > div {
-    margin: 1em;
+    margin: 0.5em 0.5em 1em;
     display: flex;
     align-self: center;
     justify-content: center;
+    flex-direction: column;
+}
+
+#health-overlay div:not(.hint) {
+    display: flex;
     flex-direction: column;
 }
 
@@ -389,6 +476,24 @@ div#bar-fill {
     transform: translateY(-9px);
 }
 
+/* Animations for Plant Selection */
+@keyframes slide-prev {
+    0% { 
+        transform: translateX(0);
+    }
+    100% { 
+        transform: translateX(-150%);
+    }
+}
+@keyframes slide-next {
+    0% { 
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(150%);
+    }
+}
+
 /* Animations for calendar */
 @keyframes flipDown {
     0% { 
@@ -440,6 +545,33 @@ div#bar-fill {
     }
 }
 
+@keyframes plantIdle {
+    0% {
+        transform: scale(1);
+        opacity: 100%;
+    }
+    100% {
+        transform: scale(1.1);
+        opacity: 90%;
+    }
+}
+
+@keyframes revealHint {
+    0% {
+        transform: translateY(100%);
+        opacity: 0%;
+    }
+    50% {
+        transform: translateY(0%) scale(1.1);
+
+        opacity: 100%;
+    }
+    100% {
+        transform: translateY(100%);
+        opacity: 0%;
+    }
+}
+
 #resources .card {
     background-color: #F2EEE9;
     align-items: center;
@@ -463,6 +595,7 @@ button {
     border: 1px solid black;
     background-color: #F2EEE9;
     font-size: 1.4em;
+    cursor: pointer;
 }
 
 button:hover {
@@ -473,14 +606,14 @@ button:hover {
     position: absolute;
 }
 
-#start-btn.hidden {
+.animationOn #start-btn.hidden {
     transition: all 0.5s ease;
 }
-#start-btn.showing {
+.animationOn #start-btn.showing {
     transition: all 0.75s ease;
 }
 
-#action-area button:not(:first-child) {
+.animationOn#action-area button:not(:first-child) {
     transition: transform 0.5s ease, opacity .3s ease, visibility 0.3s ease;
 }
 
