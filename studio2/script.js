@@ -1,6 +1,9 @@
 (function(){
     'use strict';
     console.log("Reading js");
+    const scrollHint = document.getElementById('scroll-hint');
+
+    let scrollHintTimer, focusTimer;
 
     window.onbeforeunload = function () {
         window.scrollTo(0, 0);
@@ -16,6 +19,9 @@
         let prevCounter = 1;
         let doneResizing;
 
+        scrollHintTimer = setTimeout( showScrollHint(), 2000);
+        scrollHint.style.bottom = `-${window.pageYOffset - 50}px`;
+
         const loadingStripes = document.querySelectorAll('#loading-stripes div');
         console.log(loadingStripes)
         loadingStripes.forEach( (stripe) => {
@@ -29,13 +35,16 @@
                     preloader.style.display = 'none';
                 }, 3000);
             });
-
-            
         })
 
         resetPagePosition();
 
         window.addEventListener('scroll', function () {
+            hideScrollHint();
+            scrollHint.style.bottom = `-${window.pageYOffset - 50}px`;
+
+            clearTimeout(focusTimer);
+
             pageTop = window.pageYOffset + (window.innerHeight - 100);
             if (pageTop > postTops[counter] && counter < postTops.length) {
                 counter++;
@@ -50,7 +59,7 @@
             }
 
             if (counter != prevCounter) {
-                // Show overlay if not on first article
+                // Show overlay button if not on first article
                 if (counter > 1) {
                     console.log("SHOW")
                     closeBtn.className = 'showing';
@@ -59,7 +68,7 @@
                 }
                 closeOverlay();
 
-                this.setTimeout( function() {
+                setTimeout( function() {
                     document.querySelector('#container img').className = 'sect' + counter;
                     focusArticle();
 
@@ -67,6 +76,14 @@
 
                 prevCounter = counter;
             }
+            if (counter > 1) {
+                focusTimer = setTimeout( function() {
+                    document.querySelector('#container img').className = 'sect' + counter;
+                    focusArticle();
+                }, 5000);
+            }
+            
+
         }); // end window scroll function
 
         window.addEventListener('resize', function () {
@@ -91,11 +108,17 @@
         }
 
         function focusArticle() {
+            console.log("focus article")
             window.scrollTo({
-                top: (postTops[counter-1] - 200),
+                top: (postTops[counter-1] - 150),
                 left: 0,
                 behavior: 'smooth'
-            });              
+            });   
+            setTimeout( () => {
+                clearTimeout(focusTimer);
+                showScrollHint();
+            }, 4000);
+           
         }
 
         // Set transition for buttons
@@ -110,6 +133,8 @@
         closeOverlay();
 
         function openOverlay() {
+            hideScrollHint();
+
             console.log("open")
             console.log(pageTop)
             // Set current article to correct spot
@@ -160,6 +185,8 @@
             setTimeout( () => {
                 overlay.className = 'hidden';
             }, 1000)
+
+            scrollHintTimer = setTimeout(showScrollHint, 5000);
         }
 
 
@@ -173,6 +200,32 @@
         }
         closeBtn.addEventListener('mouseover', toggleButton);
         closeBtn.addEventListener('mouseout', toggleButton);
+
+        function showScrollHint() {
+            console.log("SHOW SCROLL: ", postTops[counter-1])
+            clearTimeout(scrollHintTimer);
+            // scrollHint.style.bottom = `-${window.pageYOffset - 50}px`;
+
+            // scrollHint.style.bottom = `-${(postTops[counter-1] - 150)}px`;
+            console.log(window.pageYOffset);
+            if ( counter < postTops.length ) {
+                scrollHint.className = 'showing';
+            }
+
+
+            // window.scrollTo({
+            //     top: (postTops[counter-1] - 200),
+            //     left: 0,
+            //     behavior: 'smooth'
+            // }); 
+        }
+
+        function hideScrollHint() {
+            console.log("HIDE SCROLL")
+            clearTimeout(scrollHintTimer);
+            
+            scrollHint.className = 'hidden';
+        }
 
 
     }); // end window load function

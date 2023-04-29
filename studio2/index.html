@@ -26,11 +26,11 @@
         <div class="s3"></div>
         <div class="s4"></div>
     </div>
+    
     <main>
 		<section id="sect1">
 			<article>
 				<h1>Every Picture</h1>
-				<p></p>
 			</article>
 		</section>
 
@@ -54,7 +54,18 @@
 				<p>This V4 route is a dynamic problem that requires jumping for the next hold and potentially running into the wall. I did not complete this route because I am not flexible and I didn't want to embarrass myself.</p>
 			</article>
 		</section>
+
+        
 	</main>
+
+    <div id="scroll-hint" class="hidden">
+        <h2>Scroll</h2>
+        <span>
+            <svg width="31" height="18" viewBox="0 0 31 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.9192 16.7475C14.7002 17.5286 15.9665 17.5286 16.7476 16.7475L29.4755 4.01958C30.2566 3.23854 30.2566 1.97221 29.4755 1.19116C28.6945 0.410108 27.4281 0.410108 26.6471 1.19116L15.3334 12.5049L4.01967 1.19116C3.23862 0.410108 1.97229 0.410108 1.19124 1.19116C0.41019 1.97221 0.41019 3.23854 1.19124 4.01958L13.9192 16.7475ZM13.3334 14.6666V15.3333H17.3334V14.6666H13.3334Z" fill="#432836"/>
+            </svg>
+        </span>
+    </div>
 
     <input type="image" id="close-overlay" class="hidden" alt="expand"
     src="images/overlay-open.png">
@@ -63,7 +74,9 @@
         <div>
             <video autoplay muted controls loop src="videos/v2.webm">
             </video>
-            <div id="loader" class="showing"></div>
+            <div id="loader" class="showing">
+                <p id="loading-text">Loading Video . . .</p>
+            </div>
         </div>
         
     </section>

@@ -18,9 +18,11 @@ main {
 
 main section {
 	height: 100vh;
+    /* width: 25vw; */
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+    align-items: center;
 }
 
 article {
@@ -61,6 +63,34 @@ p {
     transform: translate(0, -50%);
 }
 
+#scroll-hint {
+    position: absolute;
+    left: calc(15% - 50px);
+    bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    z-index: 100;
+    color: #432836;
+    transition: opacity 1s ease-out, visibility 1s ease-out;
+}
+
+#scroll-hint.showing {
+    animation: scrollHint 2s infinite alternate ease-in-out;
+}
+
+@keyframes scrollHint {
+    0% {
+        opacity: 0%;
+    }
+    100% {
+        opacity: 100%;
+        transform: translateY(30px);
+    }
+}
+
 .animate {
 	animation-duration: 700ms;
 	animation-fill-mode: forwards;
@@ -89,7 +119,7 @@ p {
 
 /* Orange V4 */
 .sect4 {
-	top: calc(-1300px + 15vh);
+	top: calc(-1300px + 30vh);
     left: calc(-1250px + 75vw);
 }
 
@@ -231,6 +261,7 @@ p {
     position: relative;
 }
 
+
 video {
     position: absolute;
     height: 55vh;
@@ -239,11 +270,30 @@ video {
 }
 
 #loader {
-    position: absolute;
+    position: relative;
     width: 30vw;
     height: 50vh;
     z-index: 2;
     padding: 5%;
     background: url('images/v2.gif') no-repeat top left;
     transition: all 1s ease;
+}
+
+#loading-text {
+    position: absolute;
+    bottom: -10px;
+    color:white;
+    height: 30px;
+    overflow: hidden;
+    width: 105px;
+    animation: typing 3s infinite;
+}
+
+@keyframes typing {
+    0% {
+        width: 105px;
+    }
+    100% {
+        width: 130px;
+    }
 }
